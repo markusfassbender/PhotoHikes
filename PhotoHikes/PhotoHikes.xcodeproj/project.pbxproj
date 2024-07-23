@@ -14,6 +14,7 @@
 		28C9C67D2C4FFDD10055A357 /* PhotoHikesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C67C2C4FFDD10055A357 /* PhotoHikesUITests.swift */; };
 		28C9C67F2C4FFDD10055A357 /* PhotoHikesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C67E2C4FFDD10055A357 /* PhotoHikesUITestsLaunchTests.swift */; };
 		28EFAE1C2C50026500FAA6B2 /* TrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE1B2C50026500FAA6B2 /* TrackingView.swift */; };
+		28EFAE1E2C50042800FAA6B2 /* TrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE1D2C50042800FAA6B2 /* TrackingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		28C9C67E2C4FFDD10055A357 /* PhotoHikesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHikesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		28C9C68B2C4FFF290055A357 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		28EFAE1B2C50026500FAA6B2 /* TrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingView.swift; sourceTree = "<group>"; };
+		28EFAE1D2C50042800FAA6B2 /* TrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				28EFAE1B2C50026500FAA6B2 /* TrackingView.swift */,
+				28EFAE1D2C50042800FAA6B2 /* TrackingViewModel.swift */,
 			);
 			path = TrackingScreen;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28EFAE1C2C50026500FAA6B2 /* TrackingView.swift in Sources */,
+				28EFAE1E2C50042800FAA6B2 /* TrackingViewModel.swift in Sources */,
 				28C9C6622C4FFDCC0055A357 /* PhotoHikesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
