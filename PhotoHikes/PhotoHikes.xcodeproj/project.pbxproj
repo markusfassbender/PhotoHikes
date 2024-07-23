@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		28C9C6622C4FFDCC0055A357 /* PhotoHikesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6612C4FFDCC0055A357 /* PhotoHikesApp.swift */; };
-		28C9C6642C4FFDCC0055A357 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6632C4FFDCC0055A357 /* ContentView.swift */; };
 		28C9C6662C4FFDD00055A357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28C9C6652C4FFDD00055A357 /* Assets.xcassets */; };
 		28C9C6692C4FFDD00055A357 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28C9C6682C4FFDD00055A357 /* Preview Assets.xcassets */; };
 		28C9C6732C4FFDD10055A357 /* PhotoHikesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6722C4FFDD10055A357 /* PhotoHikesTests.swift */; };
 		28C9C67D2C4FFDD10055A357 /* PhotoHikesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C67C2C4FFDD10055A357 /* PhotoHikesUITests.swift */; };
 		28C9C67F2C4FFDD10055A357 /* PhotoHikesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C67E2C4FFDD10055A357 /* PhotoHikesUITestsLaunchTests.swift */; };
+		28EFAE1C2C50026500FAA6B2 /* TrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE1B2C50026500FAA6B2 /* TrackingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +36,6 @@
 /* Begin PBXFileReference section */
 		28C9C65E2C4FFDCC0055A357 /* PhotoHikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoHikes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C9C6612C4FFDCC0055A357 /* PhotoHikesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHikesApp.swift; sourceTree = "<group>"; };
-		28C9C6632C4FFDCC0055A357 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		28C9C6652C4FFDD00055A357 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28C9C6682C4FFDD00055A357 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		28C9C66E2C4FFDD10055A357 /* PhotoHikesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoHikesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +44,7 @@
 		28C9C67C2C4FFDD10055A357 /* PhotoHikesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHikesUITests.swift; sourceTree = "<group>"; };
 		28C9C67E2C4FFDD10055A357 /* PhotoHikesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHikesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		28C9C68B2C4FFF290055A357 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		28EFAE1B2C50026500FAA6B2 /* TrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,8 +96,8 @@
 		28C9C6602C4FFDCC0055A357 /* PhotoHikes */ = {
 			isa = PBXGroup;
 			children = (
+				28EFAE1A2C50025500FAA6B2 /* TrackingScreen */,
 				28C9C6612C4FFDCC0055A357 /* PhotoHikesApp.swift */,
-				28C9C6632C4FFDCC0055A357 /* ContentView.swift */,
 				28C9C6652C4FFDD00055A357 /* Assets.xcassets */,
 				28C9C6672C4FFDD00055A357 /* Preview Content */,
 			);
@@ -127,6 +127,14 @@
 				28C9C67E2C4FFDD10055A357 /* PhotoHikesUITestsLaunchTests.swift */,
 			);
 			path = PhotoHikesUITests;
+			sourceTree = "<group>";
+		};
+		28EFAE1A2C50025500FAA6B2 /* TrackingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				28EFAE1B2C50026500FAA6B2 /* TrackingView.swift */,
+			);
+			path = TrackingScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28C9C6642C4FFDCC0055A357 /* ContentView.swift in Sources */,
+				28EFAE1C2C50026500FAA6B2 /* TrackingView.swift in Sources */,
 				28C9C6622C4FFDCC0055A357 /* PhotoHikesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
