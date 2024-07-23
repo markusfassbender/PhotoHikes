@@ -8,16 +8,27 @@
 import SwiftUI
 
 struct TrackingView: View {
+    
+    @State var viewModel = TrackingViewModel()
+    
+    private var trackingButtonTitle: LocalizedStringKey {
+        viewModel.isTracking ? "Stop" : "Start"
+    }
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        Text("Hello, World!")
+            .padding()
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(trackingButtonTitle) {
+                        viewModel.isTracking.toggle()
+                    }
+                }
+            }
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     TrackingView()

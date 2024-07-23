@@ -8,5 +8,9 @@
 import SwiftUI
 
 @Observable final class TrackingViewModel {
+    var isTracking: Bool
     
+    init() {
+        isTracking = false
+    }
 }
