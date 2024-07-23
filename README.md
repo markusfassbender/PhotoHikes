@@ -7,9 +7,9 @@ Requires Xcode 15.4 without any additional tooling.
 
 ### Steps done
 - [x] setup project
+- [x] add initial screen with start/stop button
 
 ### Steps to do
-- [] add initial screen with start/stop button
 - [] implement location services
     - how to track in background? read location services documentation
 - [] add api swift package
