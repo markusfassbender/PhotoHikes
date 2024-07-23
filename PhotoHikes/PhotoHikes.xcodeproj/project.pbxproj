@@ -102,11 +102,10 @@
 		28C9C6602C4FFDCC0055A357 /* PhotoHikes */ = {
 			isa = PBXGroup;
 			children = (
+				28EFAE242C50078D00FAA6B2 /* Screens */,
 				28C9C6612C4FFDCC0055A357 /* PhotoHikesApp.swift */,
-				28EFAE1F2C5005E400FAA6B2 /* PhotoHikesView.swift */,
 				28C9C6672C4FFDD00055A357 /* Preview Content */,
 				28EFAE232C50071000FAA6B2 /* Support */,
-				28EFAE1A2C50025500FAA6B2 /* TrackingScreen */,
 			);
 			path = PhotoHikes;
 			sourceTree = "<group>";
@@ -152,6 +151,23 @@
 				28EFAE212C50070700FAA6B2 /* Localizable.xcstrings */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		28EFAE242C50078D00FAA6B2 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				28EFAE252C50079800FAA6B2 /* PhotoHikes */,
+				28EFAE1A2C50025500FAA6B2 /* TrackingScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		28EFAE252C50079800FAA6B2 /* PhotoHikes */ = {
+			isa = PBXGroup;
+			children = (
+				28EFAE1F2C5005E400FAA6B2 /* PhotoHikesView.swift */,
+			);
+			path = PhotoHikes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
