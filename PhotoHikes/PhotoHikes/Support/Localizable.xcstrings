@@ -1,0 +1,15 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Hello, World!" : {
+
+    },
+    "Start" : {
+
+    },
+    "Stop" : {
+
+    }
+  },
+  "version" : "1.0"
+}

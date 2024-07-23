@@ -16,6 +16,7 @@
 		28EFAE1C2C50026500FAA6B2 /* TrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE1B2C50026500FAA6B2 /* TrackingView.swift */; };
 		28EFAE1E2C50042800FAA6B2 /* TrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE1D2C50042800FAA6B2 /* TrackingViewModel.swift */; };
 		28EFAE202C5005E400FAA6B2 /* PhotoHikesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE1F2C5005E400FAA6B2 /* PhotoHikesView.swift */; };
+		28EFAE222C50070700FAA6B2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 28EFAE212C50070700FAA6B2 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		28EFAE1B2C50026500FAA6B2 /* TrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingView.swift; sourceTree = "<group>"; };
 		28EFAE1D2C50042800FAA6B2 /* TrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingViewModel.swift; sourceTree = "<group>"; };
 		28EFAE1F2C5005E400FAA6B2 /* PhotoHikesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHikesView.swift; sourceTree = "<group>"; };
+		28EFAE212C50070700FAA6B2 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,11 +102,12 @@
 		28C9C6602C4FFDCC0055A357 /* PhotoHikes */ = {
 			isa = PBXGroup;
 			children = (
-				28EFAE1A2C50025500FAA6B2 /* TrackingScreen */,
+				28EFAE232C50071000FAA6B2 /* Support */,
+				28C9C6652C4FFDD00055A357 /* Assets.xcassets */,
 				28C9C6612C4FFDCC0055A357 /* PhotoHikesApp.swift */,
 				28EFAE1F2C5005E400FAA6B2 /* PhotoHikesView.swift */,
-				28C9C6652C4FFDD00055A357 /* Assets.xcassets */,
 				28C9C6672C4FFDD00055A357 /* Preview Content */,
+				28EFAE1A2C50025500FAA6B2 /* TrackingScreen */,
 			);
 			path = PhotoHikes;
 			sourceTree = "<group>";
@@ -141,6 +144,14 @@
 				28EFAE1D2C50042800FAA6B2 /* TrackingViewModel.swift */,
 			);
 			path = TrackingScreen;
+			sourceTree = "<group>";
+		};
+		28EFAE232C50071000FAA6B2 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				28EFAE212C50070700FAA6B2 /* Localizable.xcstrings */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +260,7 @@
 			files = (
 				28C9C6692C4FFDD00055A357 /* Preview Assets.xcassets in Resources */,
 				28C9C6662C4FFDD00055A357 /* Assets.xcassets in Resources */,
+				28EFAE222C50070700FAA6B2 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
