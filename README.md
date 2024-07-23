@@ -5,8 +5,10 @@ This is an example app as a show case as Senior iOS Engineer.
 ### Setup
 Requires Xcode 15.4 without any additional tooling.
 
+### Steps done
+- [x] setup project
+
 ### Steps to do
-- [] setup project
 - [] add initial screen with start/stop button
 - [] implement location services
     - how to track in background? read location services documentation
