@@ -16,7 +16,7 @@ struct TrackingView: View {
     }
     
     var body: some View {
-        Text("Hello, World!")
+        description
             .padding()
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -25,6 +25,21 @@ struct TrackingView: View {
                     }
                 }
             }
+    }
+    
+    @ViewBuilder
+    private var description: some View {
+        if viewModel.isTracking {
+            Text("Tracking started...")
+        } else {
+            VStack {
+                Text("🏃‍➡️")
+                    .font(.largeTitle)
+                    .padding(.bottom)
+                
+                Text("Start tracking and move to automatically add new photos to the stream.")
+            }
+        }
     }
 }
 

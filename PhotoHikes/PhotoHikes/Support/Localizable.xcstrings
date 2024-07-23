@@ -1,13 +1,19 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Hello, World!" : {
+    "🏃‍➡️" : {
 
     },
     "Start" : {
 
     },
+    "Start tracking and move to automatically add new photos to the stream." : {
+
+    },
     "Stop" : {
+
+    },
+    "Tracking started..." : {
 
     }
   },
