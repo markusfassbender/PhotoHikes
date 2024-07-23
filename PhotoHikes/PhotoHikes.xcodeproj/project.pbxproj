@@ -44,6 +44,7 @@
 		28C9C6782C4FFDD10055A357 /* PhotoHikesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoHikesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C9C67C2C4FFDD10055A357 /* PhotoHikesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHikesUITests.swift; sourceTree = "<group>"; };
 		28C9C67E2C4FFDD10055A357 /* PhotoHikesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHikesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		28C9C68B2C4FFF290055A357 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +75,7 @@
 		28C9C6552C4FFDCC0055A357 = {
 			isa = PBXGroup;
 			children = (
+				28C9C68B2C4FFF290055A357 /* README.md */,
 				28C9C6602C4FFDCC0055A357 /* PhotoHikes */,
 				28C9C6712C4FFDD10055A357 /* PhotoHikesTests */,
 				28C9C67B2C4FFDD10055A357 /* PhotoHikesUITests */,
