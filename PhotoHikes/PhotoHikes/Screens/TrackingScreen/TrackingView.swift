@@ -21,9 +21,12 @@ struct TrackingView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(trackingButtonTitle) {
-                        viewModel.isTracking.toggle()
+                        viewModel.trackingButtonTapped()
                     }
                 }
+            }
+            .task {
+                await viewModel.setUp()
             }
     }
     
