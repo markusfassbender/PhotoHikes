@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 @Observable
 final class TrackingViewModel {
@@ -43,6 +44,10 @@ final class TrackingViewModel {
         
         do {
             try await locationService.requestAuthorization()
+            
+            for try await locationUpdate in await locationService.liveUpdates() {
+                processLocationUpdate(locationUpdate)
+            }
         } catch LocationServiceError.invalidAuthorizationStatus {
             errorMessage = "required authorizationStatus `authorizedAlways` not granted!"
         } catch LocationServiceError.invalidAccuracy {
@@ -55,5 +60,11 @@ final class TrackingViewModel {
     
     private func stopTracking() {
         isTracking = false
+        
+        // TODO: stop running services
+    }
+    
+    private func processLocationUpdate(_ locationUpdate: CLLocationUpdate) {
+        debugPrint("location update: \(String(describing: locationUpdate))")
     }
 }
