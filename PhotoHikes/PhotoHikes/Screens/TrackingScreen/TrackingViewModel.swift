@@ -13,6 +13,7 @@ final class TrackingViewModel {
     private var locationService: LocationService!
     
     var isTracking: Bool
+    var errorMessage: LocalizedStringKey?
     
     init() {
         isTracking = false
@@ -26,6 +27,8 @@ final class TrackingViewModel {
     // MARK: - Tracking
     
     func trackingButtonTapped() {
+        errorMessage = nil
+        
         Task {
             if isTracking {
                 stopTracking()
@@ -41,11 +44,11 @@ final class TrackingViewModel {
         do {
             try await locationService.requestAuthorization()
         } catch LocationServiceError.invalidAuthorizationStatus {
-            debugPrint("LocationService: required authorizationStatus `authorizedAlways` not granted!")
+            errorMessage = "required authorizationStatus `authorizedAlways` not granted!"
         } catch LocationServiceError.invalidAccuracy {
-            debugPrint("LocationService: required accuracyAuthorization `fullAccuracy` not granted!")
+            errorMessage = "required accuracyAuthorization `fullAccuracy` not granted!"
         } catch {
-            debugPrint("LocationService: unhandled error!")
+            errorMessage = "unhandled error!"
         }
         
     }

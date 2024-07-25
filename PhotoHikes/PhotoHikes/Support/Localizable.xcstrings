@@ -4,6 +4,12 @@
     "🏃‍➡️" : {
 
     },
+    "required accuracyAuthorization `fullAccuracy` not granted!" : {
+
+    },
+    "required authorizationStatus `authorizedAlways` not granted!" : {
+
+    },
     "Start" : {
 
     },
@@ -14,6 +20,9 @@
 
     },
     "Tracking started..." : {
+
+    },
+    "unhandled error!" : {
 
     }
   },
