@@ -24,11 +24,25 @@ final class LocationService: NSObject {
     
     /// Requests user to grant authorization. Throws `LocationServiceError` on failure or insufficient requirements.
     func requestAuthorization() async throws {
-        locationManager.requestAlwaysAuthorization()
-        
-        try await withCheckedThrowingContinuation { continuation in
-            self.authorizationContinuation = continuation
+        switch locationManager.authorizationStatus {
+        case .authorizedAlways:
+            return
+        case .notDetermined:
+            locationManager.requestAlwaysAuthorization()
+            
+            try await withCheckedThrowingContinuation { continuation in
+                self.authorizationContinuation = continuation
+            }
+        case .denied, .restricted, .authorizedWhenInUse:
+            throw LocationServiceError.invalidAuthorizationStatus
+        @unknown default:
+            throw LocationServiceError.invalidAuthorizationStatus
         }
+    }
+    
+    /// Starts delivering the location updates.
+    func liveUpdates() -> CLLocationUpdate.Updates {
+        CLLocationUpdate.liveUpdates(.fitness)
     }
 }
 
@@ -45,5 +59,6 @@ extension LocationService: CLLocationManagerDelegate {
         }
         
         authorizationContinuation?.resume()
+        authorizationContinuation = nil
     }
 }
