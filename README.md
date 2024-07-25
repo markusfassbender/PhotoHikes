@@ -10,11 +10,12 @@ Requires Xcode 15.4 without any additional tooling.
 - [x] add initial screen with start/stop button
 
 ### Steps to do
-- [] implement location services
+- [ ] implement location services
     - how to track in background? read location services documentation
-- [] add api swift package
-- [] add flickr swift package
-- [] load images from flickr
+- [ ] implement dependency injection
+- [ ] add api swift package
+- [ ] add flickr swift package
+- [ ] load images from flickr
 
 ### Questions
 - why is it mentioned that "it should work for at least a two hour walk"?

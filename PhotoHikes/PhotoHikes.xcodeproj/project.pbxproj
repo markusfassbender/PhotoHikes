@@ -17,6 +17,8 @@
 		28EFAE202C5005E400FAA6B2 /* PhotoHikesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE1F2C5005E400FAA6B2 /* PhotoHikesView.swift */; };
 		28EFAE222C50070700FAA6B2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 28EFAE212C50070700FAA6B2 /* Localizable.xcstrings */; };
 		28EFAE282C50081900FAA6B2 /* TrackingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE272C50081900FAA6B2 /* TrackingViewModelTests.swift */; };
+		28EFAE2C2C52230100FAA6B2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE2B2C52230100FAA6B2 /* LocationService.swift */; };
+		28EFAE2E2C5229F500FAA6B2 /* LocationServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE2D2C5229F500FAA6B2 /* LocationServiceError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		28EFAE1F2C5005E400FAA6B2 /* PhotoHikesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHikesView.swift; sourceTree = "<group>"; };
 		28EFAE212C50070700FAA6B2 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		28EFAE272C50081900FAA6B2 /* TrackingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingViewModelTests.swift; sourceTree = "<group>"; };
+		28EFAE2B2C52230100FAA6B2 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		28EFAE2D2C5229F500FAA6B2 /* LocationServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,9 +106,10 @@
 		28C9C6602C4FFDCC0055A357 /* PhotoHikes */ = {
 			isa = PBXGroup;
 			children = (
-				28EFAE242C50078D00FAA6B2 /* Screens */,
 				28C9C6612C4FFDCC0055A357 /* PhotoHikesApp.swift */,
 				28C9C6672C4FFDD00055A357 /* Preview Content */,
+				28EFAE242C50078D00FAA6B2 /* Screens */,
+				28EFAE292C5222CA00FAA6B2 /* Services */,
 				28EFAE232C50071000FAA6B2 /* Support */,
 			);
 			path = PhotoHikes;
@@ -168,6 +173,23 @@
 				28EFAE1F2C5005E400FAA6B2 /* PhotoHikesView.swift */,
 			);
 			path = PhotoHikes;
+			sourceTree = "<group>";
+		};
+		28EFAE292C5222CA00FAA6B2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				28EFAE2A2C5222E300FAA6B2 /* Location */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		28EFAE2A2C5222E300FAA6B2 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				28EFAE2B2C52230100FAA6B2 /* LocationService.swift */,
+				28EFAE2D2C5229F500FAA6B2 /* LocationServiceError.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,8 +325,10 @@
 			files = (
 				28EFAE202C5005E400FAA6B2 /* PhotoHikesView.swift in Sources */,
 				28EFAE1C2C50026500FAA6B2 /* TrackingView.swift in Sources */,
+				28EFAE2C2C52230100FAA6B2 /* LocationService.swift in Sources */,
 				28EFAE1E2C50042800FAA6B2 /* TrackingViewModel.swift in Sources */,
 				28C9C6622C4FFDCC0055A357 /* PhotoHikesApp.swift in Sources */,
+				28EFAE2E2C5229F500FAA6B2 /* LocationServiceError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +495,9 @@
 				DEVELOPMENT_TEAM = V3GCB27K47;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Required to record and find photos along your hike.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to record and find photos along your hike.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -500,6 +527,9 @@
 				DEVELOPMENT_TEAM = V3GCB27K47;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Required to record and find photos along your hike.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to record and find photos along your hike.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
