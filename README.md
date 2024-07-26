@@ -10,8 +10,10 @@ Requires Xcode 15.4 without any additional tooling.
 - [x] add initial screen with start/stop button
 
 ### Steps to do
-- [ ] implement location services
-    - how to track in background? read location services documentation
+- location services
+    - [ ] implement CoreLocation
+    - [ ] how to track in background? read location services documentation
+    - [ ] enable power-saving features
 - [ ] implement dependency injection
 - [ ] add api swift package
 - [ ] add flickr swift package
