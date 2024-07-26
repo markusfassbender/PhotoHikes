@@ -21,15 +21,20 @@ struct TrackingView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(trackingButtonTitle) {
-                        viewModel.isTracking.toggle()
+                        viewModel.trackingButtonTapped()
                     }
                 }
+            }
+            .task {
+                await viewModel.setUp()
             }
     }
     
     @ViewBuilder
     private var description: some View {
-        if viewModel.isTracking {
+        if let errorMessage = viewModel.errorMessage {
+            Text(errorMessage)
+        } else if viewModel.isTracking {
             Text("Tracking started...")
         } else {
             VStack {
