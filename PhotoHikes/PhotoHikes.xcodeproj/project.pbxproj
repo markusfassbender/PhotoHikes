@@ -10,8 +10,6 @@
 		28C9C6622C4FFDCC0055A357 /* PhotoHikesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6612C4FFDCC0055A357 /* PhotoHikesApp.swift */; };
 		28C9C6662C4FFDD00055A357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28C9C6652C4FFDD00055A357 /* Assets.xcassets */; };
 		28C9C6692C4FFDD00055A357 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28C9C6682C4FFDD00055A357 /* Preview Assets.xcassets */; };
-		28C9C67D2C4FFDD10055A357 /* PhotoHikesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C67C2C4FFDD10055A357 /* PhotoHikesUITests.swift */; };
-		28C9C67F2C4FFDD10055A357 /* PhotoHikesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C67E2C4FFDD10055A357 /* PhotoHikesUITestsLaunchTests.swift */; };
 		28EFAE1C2C50026500FAA6B2 /* TrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE1B2C50026500FAA6B2 /* TrackingView.swift */; };
 		28EFAE1E2C50042800FAA6B2 /* TrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE1D2C50042800FAA6B2 /* TrackingViewModel.swift */; };
 		28EFAE202C5005E400FAA6B2 /* PhotoHikesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE1F2C5005E400FAA6B2 /* PhotoHikesView.swift */; };
@@ -31,13 +29,6 @@
 			remoteGlobalIDString = 28C9C65D2C4FFDCC0055A357;
 			remoteInfo = PhotoHikes;
 		};
-		28C9C6792C4FFDD10055A357 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 28C9C6562C4FFDCC0055A357 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 28C9C65D2C4FFDCC0055A357;
-			remoteInfo = PhotoHikes;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -46,9 +37,6 @@
 		28C9C6652C4FFDD00055A357 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28C9C6682C4FFDD00055A357 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		28C9C66E2C4FFDD10055A357 /* PhotoHikesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoHikesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		28C9C6782C4FFDD10055A357 /* PhotoHikesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoHikesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		28C9C67C2C4FFDD10055A357 /* PhotoHikesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHikesUITests.swift; sourceTree = "<group>"; };
-		28C9C67E2C4FFDD10055A357 /* PhotoHikesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHikesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		28C9C68B2C4FFF290055A357 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		28EFAE1B2C50026500FAA6B2 /* TrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingView.swift; sourceTree = "<group>"; };
 		28EFAE1D2C50042800FAA6B2 /* TrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingViewModel.swift; sourceTree = "<group>"; };
@@ -76,13 +64,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		28C9C6752C4FFDD10055A357 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -92,7 +73,6 @@
 				28C9C68B2C4FFF290055A357 /* README.md */,
 				28C9C6602C4FFDCC0055A357 /* PhotoHikes */,
 				28C9C6712C4FFDD10055A357 /* PhotoHikesTests */,
-				28C9C67B2C4FFDD10055A357 /* PhotoHikesUITests */,
 				28C9C65F2C4FFDCC0055A357 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,7 +82,6 @@
 			children = (
 				28C9C65E2C4FFDCC0055A357 /* PhotoHikes.app */,
 				28C9C66E2C4FFDD10055A357 /* PhotoHikesTests.xctest */,
-				28C9C6782C4FFDD10055A357 /* PhotoHikesUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,15 +112,6 @@
 				28EFAE2F2C53A4B200FAA6B2 /* Screens */,
 			);
 			path = PhotoHikesTests;
-			sourceTree = "<group>";
-		};
-		28C9C67B2C4FFDD10055A357 /* PhotoHikesUITests */ = {
-			isa = PBXGroup;
-			children = (
-				28C9C67C2C4FFDD10055A357 /* PhotoHikesUITests.swift */,
-				28C9C67E2C4FFDD10055A357 /* PhotoHikesUITestsLaunchTests.swift */,
-			);
-			path = PhotoHikesUITests;
 			sourceTree = "<group>";
 		};
 		28EFAE1A2C50025500FAA6B2 /* TrackingScreen */ = {
@@ -252,24 +222,6 @@
 			productReference = 28C9C66E2C4FFDD10055A357 /* PhotoHikesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		28C9C6772C4FFDD10055A357 /* PhotoHikesUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 28C9C6882C4FFDD10055A357 /* Build configuration list for PBXNativeTarget "PhotoHikesUITests" */;
-			buildPhases = (
-				28C9C6742C4FFDD10055A357 /* Sources */,
-				28C9C6752C4FFDD10055A357 /* Frameworks */,
-				28C9C6762C4FFDD10055A357 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				28C9C67A2C4FFDD10055A357 /* PBXTargetDependency */,
-			);
-			name = PhotoHikesUITests;
-			productName = PhotoHikesUITests;
-			productReference = 28C9C6782C4FFDD10055A357 /* PhotoHikesUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -284,10 +236,6 @@
 						CreatedOnToolsVersion = 15.4;
 					};
 					28C9C66D2C4FFDD10055A357 = {
-						CreatedOnToolsVersion = 15.4;
-						TestTargetID = 28C9C65D2C4FFDCC0055A357;
-					};
-					28C9C6772C4FFDD10055A357 = {
 						CreatedOnToolsVersion = 15.4;
 						TestTargetID = 28C9C65D2C4FFDCC0055A357;
 					};
@@ -308,7 +256,6 @@
 			targets = (
 				28C9C65D2C4FFDCC0055A357 /* PhotoHikes */,
 				28C9C66D2C4FFDD10055A357 /* PhotoHikesTests */,
-				28C9C6772C4FFDD10055A357 /* PhotoHikesUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -325,13 +272,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		28C9C66C2C4FFDD10055A357 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		28C9C6762C4FFDD10055A357 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -364,15 +304,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		28C9C6742C4FFDD10055A357 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				28C9C67F2C4FFDD10055A357 /* PhotoHikesUITestsLaunchTests.swift in Sources */,
-				28C9C67D2C4FFDD10055A357 /* PhotoHikesUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -380,11 +311,6 @@
 			isa = PBXTargetDependency;
 			target = 28C9C65D2C4FFDCC0055A357 /* PhotoHikes */;
 			targetProxy = 28C9C66F2C4FFDD10055A357 /* PBXContainerItemProxy */;
-		};
-		28C9C67A2C4FFDD10055A357 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 28C9C65D2C4FFDCC0055A357 /* PhotoHikes */;
-			targetProxy = 28C9C6792C4FFDD10055A357 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -614,42 +540,6 @@
 			};
 			name = Release;
 		};
-		28C9C6892C4FFDD10055A357 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V3GCB27K47;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.fassbender.PhotoHikesUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PhotoHikes;
-			};
-			name = Debug;
-		};
-		28C9C68A2C4FFDD10055A357 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V3GCB27K47;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.fassbender.PhotoHikesUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PhotoHikes;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -676,15 +566,6 @@
 			buildConfigurations = (
 				28C9C6862C4FFDD10055A357 /* Debug */,
 				28C9C6872C4FFDD10055A357 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		28C9C6882C4FFDD10055A357 /* Build configuration list for PBXNativeTarget "PhotoHikesUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				28C9C6892C4FFDD10055A357 /* Debug */,
-				28C9C68A2C4FFDD10055A357 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
