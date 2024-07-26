@@ -23,6 +23,15 @@ final class TrackingViewModel {
     func setUp() async {
         // temporary helper until dependency injection is available
         locationService = await LocationService()
+        await locationService.setOnUpdateLocation { [weak self] result in
+            switch result {
+            case .success(let location):
+                self?.processLocationUpdate(location)
+            case .failure(let error):
+                self?.errorMessage = "unhandled error: \(String(describing: error))!"
+            }
+            
+        }
     }
     
     // MARK: - Tracking
@@ -32,39 +41,33 @@ final class TrackingViewModel {
         
         Task {
             if isTracking {
-                stopTracking()
+                isTracking = false
+                await stopTracking()
             } else {
+                isTracking = true
                 await startTracking()
             }
         }
     }
     
     private func startTracking() async {
-        isTracking = true
-        
         do {
             try await locationService.requestAuthorization()
-            
-            for try await locationUpdate in await locationService.liveUpdates() {
-                processLocationUpdate(locationUpdate)
-            }
+            await locationService.startUpdatingLocation()
         } catch LocationServiceError.invalidAuthorizationStatus {
             errorMessage = "required authorizationStatus `authorizedAlways` not granted!"
         } catch LocationServiceError.invalidAccuracy {
             errorMessage = "required accuracyAuthorization `fullAccuracy` not granted!"
         } catch {
-            errorMessage = "unhandled error!"
+            errorMessage = "unhandled error: \(String(describing: error))!"
         }
-        
     }
     
-    private func stopTracking() {
-        isTracking = false
-        
-        // TODO: stop running services
+    private func stopTracking() async {
+        await locationService.stopUpdatingLocation()
     }
     
-    private func processLocationUpdate(_ locationUpdate: CLLocationUpdate) {
-        debugPrint("location update: \(String(describing: locationUpdate))")
+    private func processLocationUpdate(_ location: CLLocation) {
+        debugPrint("location update: \(String(describing: location))")
     }
 }

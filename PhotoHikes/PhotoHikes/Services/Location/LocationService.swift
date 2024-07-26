@@ -11,16 +11,28 @@ import CoreLocation
 @MainActor @Observable
 final class LocationService: NSObject {
     
+    // MARK: - Properties
+    
     private let locationManager = CLLocationManager()
     
     private var authorizationContinuation: CheckedContinuation<Void, any Error>?
     
+    /// Process the location updates or errors.
+    var onUpdateLocation: ((Result<CLLocation, any Error>) -> Void)?
+    
+    // MARK: - Initialize
+    
     override init() {
         super.init()
-        
-        // Configure the location manager.
+        // self initialized
         locationManager.delegate = self
     }
+    
+    func setOnUpdateLocation(_ onUpdateLocation: @escaping (Result<CLLocation, any Error>) -> Void) {
+        self.onUpdateLocation = onUpdateLocation
+    }
+    
+    // MARK: - Location
     
     /// Requests user to grant authorization. Throws `LocationServiceError` on failure or insufficient requirements.
     func requestAuthorization() async throws {
@@ -31,7 +43,7 @@ final class LocationService: NSObject {
             locationManager.requestAlwaysAuthorization()
             
             try await withCheckedThrowingContinuation { continuation in
-                self.authorizationContinuation = continuation
+                authorizationContinuation = continuation
             }
         case .denied, .restricted, .authorizedWhenInUse:
             throw LocationServiceError.invalidAuthorizationStatus
@@ -41,12 +53,20 @@ final class LocationService: NSObject {
     }
     
     /// Starts delivering the location updates.
-    func liveUpdates() -> CLLocationUpdate.Updates {
-        CLLocationUpdate.liveUpdates(.fitness)
+    func startUpdatingLocation() {
+        locationManager.startUpdatingLocation()
+    }
+    
+    /// Stops location updates.
+    func stopUpdatingLocation() {
+        locationManager.stopUpdatingLocation()
     }
 }
 
+// MARK: - CLLocationManagerDelegate
+
 extension LocationService: CLLocationManagerDelegate {
+    
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         guard case .authorizedAlways = manager.authorizationStatus else {
             authorizationContinuation?.resume(throwing: LocationServiceError.invalidAuthorizationStatus)
@@ -60,5 +80,14 @@ extension LocationService: CLLocationManagerDelegate {
         
         authorizationContinuation?.resume()
         authorizationContinuation = nil
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        onUpdateLocation?(.success(location))
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
+        onUpdateLocation?(.failure(error))
     }
 }

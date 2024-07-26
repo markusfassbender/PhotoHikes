@@ -22,7 +22,7 @@
     "Tracking started..." : {
 
     },
-    "unhandled error!" : {
+    "unhandled error: %@!" : {
 
     }
   },

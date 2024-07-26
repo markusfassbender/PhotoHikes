@@ -8,4 +8,5 @@
 enum LocationServiceError: Error {
     case invalidAuthorizationStatus
     case invalidAccuracy
+    case failure(error: any Error)
 }
