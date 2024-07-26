@@ -9,7 +9,7 @@ import CoreLocation
 
 /// Service to provide access to `CoreLocation` to track the device location.
 @MainActor @Observable
-final class LocationService: NSObject {
+final class LocationService: NSObject, LocationServiceProtocol {
     
     // MARK: - Properties
     
@@ -34,7 +34,6 @@ final class LocationService: NSObject {
     
     // MARK: - Location
     
-    /// Requests user to grant authorization. Throws `LocationServiceError` on failure or insufficient requirements.
     func requestAuthorization() async throws {
         switch locationManager.authorizationStatus {
         case .authorizedAlways:
@@ -51,13 +50,11 @@ final class LocationService: NSObject {
             throw LocationServiceError.invalidAuthorizationStatus
         }
     }
-    
-    /// Starts delivering the location updates.
+
     func startUpdatingLocation() {
         locationManager.startUpdatingLocation()
     }
     
-    /// Stops location updates.
     func stopUpdatingLocation() {
         locationManager.stopUpdatingLocation()
     }
@@ -66,7 +63,6 @@ final class LocationService: NSObject {
 // MARK: - CLLocationManagerDelegate
 
 extension LocationService: CLLocationManagerDelegate {
-    
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         guard case .authorizedAlways = manager.authorizationStatus else {
             authorizationContinuation?.resume(throwing: LocationServiceError.invalidAuthorizationStatus)

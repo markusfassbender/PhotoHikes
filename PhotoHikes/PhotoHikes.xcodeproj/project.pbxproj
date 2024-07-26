@@ -19,6 +19,8 @@
 		28EFAE282C50081900FAA6B2 /* TrackingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE272C50081900FAA6B2 /* TrackingViewModelTests.swift */; };
 		28EFAE2C2C52230100FAA6B2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE2B2C52230100FAA6B2 /* LocationService.swift */; };
 		28EFAE2E2C5229F500FAA6B2 /* LocationServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE2D2C5229F500FAA6B2 /* LocationServiceError.swift */; };
+		28EFAE322C53A5DE00FAA6B2 /* LocationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE312C53A5DE00FAA6B2 /* LocationServiceProtocol.swift */; };
+		28EFAE342C53A63D00FAA6B2 /* LocationServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE332C53A63D00FAA6B2 /* LocationServiceMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		28EFAE272C50081900FAA6B2 /* TrackingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingViewModelTests.swift; sourceTree = "<group>"; };
 		28EFAE2B2C52230100FAA6B2 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		28EFAE2D2C5229F500FAA6B2 /* LocationServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceError.swift; sourceTree = "<group>"; };
+		28EFAE312C53A5DE00FAA6B2 /* LocationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceProtocol.swift; sourceTree = "<group>"; };
+		28EFAE332C53A63D00FAA6B2 /* LocationServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +192,8 @@
 			children = (
 				28EFAE2B2C52230100FAA6B2 /* LocationService.swift */,
 				28EFAE2D2C5229F500FAA6B2 /* LocationServiceError.swift */,
+				28EFAE312C53A5DE00FAA6B2 /* LocationServiceProtocol.swift */,
+				28EFAE332C53A63D00FAA6B2 /* LocationServiceMock.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -339,12 +345,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28EFAE342C53A63D00FAA6B2 /* LocationServiceMock.swift in Sources */,
 				28EFAE202C5005E400FAA6B2 /* PhotoHikesView.swift in Sources */,
 				28EFAE1C2C50026500FAA6B2 /* TrackingView.swift in Sources */,
 				28EFAE2C2C52230100FAA6B2 /* LocationService.swift in Sources */,
 				28EFAE1E2C50042800FAA6B2 /* TrackingViewModel.swift in Sources */,
 				28C9C6622C4FFDCC0055A357 /* PhotoHikesApp.swift in Sources */,
 				28EFAE2E2C5229F500FAA6B2 /* LocationServiceError.swift in Sources */,
+				28EFAE322C53A5DE00FAA6B2 /* LocationServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
