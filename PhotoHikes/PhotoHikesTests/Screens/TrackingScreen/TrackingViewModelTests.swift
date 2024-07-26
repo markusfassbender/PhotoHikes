@@ -11,6 +11,8 @@ import XCTest
 
 final class TrackingViewModelTests: XCTestCase {
     
+    // TODO: write more unit tests when dependency injection is available
+    
     // MARK: isTracking
     
     func testInitial_given_when_thenIsNotTracking() {

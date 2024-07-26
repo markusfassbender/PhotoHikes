@@ -11,7 +11,7 @@ import CoreLocation
 @Observable
 final class TrackingViewModel {
     
-    private var locationService: LocationService!
+    private var locationService: (any LocationServiceProtocol)!
     
     var isTracking: Bool
     var errorMessage: LocalizedStringKey?
