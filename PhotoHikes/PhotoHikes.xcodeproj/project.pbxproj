@@ -126,7 +126,7 @@
 		28C9C6712C4FFDD10055A357 /* PhotoHikesTests */ = {
 			isa = PBXGroup;
 			children = (
-				28EFAE272C50081900FAA6B2 /* TrackingViewModelTests.swift */,
+				28EFAE2F2C53A4B200FAA6B2 /* Screens */,
 			);
 			path = PhotoHikesTests;
 			sourceTree = "<group>";
@@ -190,6 +190,22 @@
 				28EFAE2D2C5229F500FAA6B2 /* LocationServiceError.swift */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		28EFAE2F2C53A4B200FAA6B2 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				28EFAE302C53A4B900FAA6B2 /* TrackingScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		28EFAE302C53A4B900FAA6B2 /* TrackingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				28EFAE272C50081900FAA6B2 /* TrackingViewModelTests.swift */,
+			);
+			path = TrackingScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
