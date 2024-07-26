@@ -30,7 +30,6 @@ final class TrackingViewModel {
             case .failure(let error):
                 self?.errorMessage = "unhandled error: \(String(describing: error))!"
             }
-            
         }
     }
     

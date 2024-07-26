@@ -11,6 +11,8 @@ import XCTest
 
 final class TrackingViewModelTests: XCTestCase {
     
+    // MARK: isTracking
+    
     func testInitial_given_when_thenIsNotTracking() {
         // given
         let viewModel = makeViewModel()
@@ -29,6 +31,17 @@ final class TrackingViewModelTests: XCTestCase {
         
         // then
         XCTAssertTrue(viewModel.isTracking)
+    }
+    
+    func testSetUp_given_when_thenIsNotTracking() async {
+        // given
+        let viewModel = makeViewModel()
+        
+        // when
+        await viewModel.setUp()
+        
+        // then
+        XCTAssertFalse(viewModel.isTracking)
     }
     
     // MARK: - Helpers
