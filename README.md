@@ -2,18 +2,24 @@
 
 This is an example app as a show case as Senior iOS Engineer.
 
-### Setup
+## Setup
+
+### Local Machine
 Requires Xcode 15.4 without any additional tooling.
 
-### Steps done
+### iOS Device Requirements
+The iOS devices requires Location Services and GPS capabilities to install the app. 
+
+
+## TODOs
+
+### Steps
 - [x] setup project
 - [x] add initial screen with start/stop button
-
-### Steps to do
 - location services
-    - [ ] implement CoreLocation
-    - [ ] how to track in background? read location services documentation
-    - [ ] enable power-saving features
+  - [x] implement CoreLocation
+  - [ ] how to track in background? read location services documentation
+  - [ ] enable power-saving features
 - [ ] implement dependency injection
 - [ ] add api swift package
 - [ ] add flickr swift package
