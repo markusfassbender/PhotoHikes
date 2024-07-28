@@ -21,7 +21,7 @@ The iOS devices requires Location Services and GPS capabilities to install the a
   - [ ] how to track in background? read location services documentation
   - [ ] enable power-saving features
 - [ ] implement dependency injection
-- [ ] add api swift package
+- [x] add network service swift package
 - [ ] add flickr swift package
 - [ ] load images from flickr
 
