@@ -4,4 +4,7 @@
    <FileRef
       location = "group:PhotoHikes/PhotoHikes.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:NetworkService">
+   </FileRef>
 </Workspace>
