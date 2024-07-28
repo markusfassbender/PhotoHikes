@@ -21,7 +21,7 @@ final class NetworkServiceTests: XCTestCase {
         super.tearDown()
     }
     
-    func testLoad_given500Error_thenThrowError() async throws {
+    func testLoad_given500Error_thenThrowSomeError() async throws {
         // given
         let service = makeService()
         let url = try XCTUnwrap(URL(string: "https://apple.com"))
@@ -40,6 +40,29 @@ final class NetworkServiceTests: XCTestCase {
             _ = try await service.load(request)
         } catch {
             // pass with expected error
+        }
+    }
+    
+    func testLoad_given500Data_thenThrowNetworkServiceError() async throws {
+        // given
+        let service = makeService()
+        let url = try XCTUnwrap(URL(string: "https://apple.com"))
+        let request = URLRequest(url: url)
+        let response = HTTPURLResponse(url: url, statusCode: 500, httpVersion: nil, headerFields: nil)
+        
+        URLProtocolMock.mockURLs[url] = (
+            error: nil,
+            data: Data(),
+            response: response
+        )
+        
+        // when
+        // then
+        do {
+            _ = try await service.load(request)
+        } catch NetworkServiceError.badStatusCode(let statusCode, let data) {
+            XCTAssertEqual(statusCode, 500)
+            XCTAssertTrue(data.isEmpty)
         }
     }
     
