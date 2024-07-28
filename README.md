@@ -22,7 +22,7 @@ The iOS devices requires Location Services and GPS capabilities to install the a
   - [ ] enable power-saving features
 - [ ] implement dependency injection
 - [x] add network service swift package
-- [ ] add flickr swift package
+- [ ] add flickr service
 - [ ] load images from flickr
 
 ### Questions
