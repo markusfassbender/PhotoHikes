@@ -70,7 +70,10 @@ final class FlickrServiceTests: XCTestCase {
         let imageList = try await service.loadImageList()
         
         // then
-        XCTAssertEqual(imageList.data.photos.first?.id, "53888638560")
+        let photo = imageList.data.photos.first
+        XCTAssertEqual(photo?.id, "53888638560")
+        XCTAssertEqual(photo?.server, "65535")
+        XCTAssertEqual(photo?.secret, "84b58e50cc")
     }
     
     // MARK: - Helpers

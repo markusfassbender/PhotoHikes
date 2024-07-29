@@ -32,5 +32,7 @@ extension FlickrImageList {
 extension FlickrImageList.Data {
     struct Photo: Decodable {
         let id: String
+        let server: String
+        let secret: String
     }
 }
