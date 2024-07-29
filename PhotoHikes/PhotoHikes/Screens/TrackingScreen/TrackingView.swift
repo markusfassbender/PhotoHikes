@@ -35,7 +35,19 @@ struct TrackingView: View {
         if let errorMessage = viewModel.errorMessage {
             Text(errorMessage)
         } else if viewModel.isTracking {
-            Text("Tracking started...")
+            if viewModel.trackedImages.isEmpty {
+                Text("Tracking started...")
+            } else {
+                ScrollView {
+                    LazyVStack(content: {
+                        ForEach(viewModel.trackedImages, id: \.self) { uiImage in
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    })
+                }
+            }
         } else {
             VStack {
                 Text("🏃‍➡️")
