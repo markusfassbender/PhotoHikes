@@ -29,10 +29,20 @@ extension FlickrImageList {
 
 // MARK: - Photo
 
-extension FlickrImageList.Data {
+extension FlickrImageList {
     struct Photo: Decodable {
         let id: String
         let server: String
         let secret: String
+        
+        init(
+            id: String,
+            server: String,
+            secret: String
+        ) {
+            self.id = id
+            self.server = server
+            self.secret = secret
+        }
     }
 }

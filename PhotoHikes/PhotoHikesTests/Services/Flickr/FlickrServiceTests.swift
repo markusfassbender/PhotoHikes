@@ -24,6 +24,98 @@ final class FlickrServiceTests: XCTestCase {
         super.tearDown()
     }
     
+    func testLoadImage_givenError_thenThrowsError() async throws {
+        // given
+        let service = makeService()
+        
+        mockNetworkService.load_mockMethod = { _ in
+            throw MockError.failure
+        }
+        
+        // when
+        // then
+        do {
+            _ = try await service.loadImage()
+        } catch MockError.failure {
+            // success
+        } catch {
+            XCTFail("expected 'MockError.failure'!")
+        }
+    }
+    
+    func testLoadImage_givenJSONData_thenThrowsError() async throws {
+        // given
+        let service = makeService()
+        
+        mockNetworkService.load_mockValue = dataSuccessEmptyList
+        
+        // when
+        // then
+        do {
+            _ = try await service.loadImage()
+        } catch FlickrServiceError.emptyPhotoList {
+            // success
+        } catch {
+            XCTFail("expected 'FlickrServiceError.emptyPhotoList'!")
+        }
+    }
+    
+    func testLoadImageFromPhoto_givenError_thenThrowsError() async throws {
+        // given
+        let service = makeService()
+        let mockPhoto = FlickrImageList.Photo(
+            id: "53888638560",
+            server: "65535",
+            secret: "84b58e50cc"
+        )
+        
+        mockNetworkService.load_mockMethod = { _ in
+            throw MockError.failure
+        }
+        
+        // when
+        // then
+        do {
+            _ = try await service.loadImage(from: mockPhoto)
+        } catch MockError.failure {
+            // success
+        } catch {
+            XCTFail("expected 'MockError.failure'!")
+        }
+    }
+    
+    func testLoadImageFromPhoto_givenData_thenReturnsData() async throws {
+        // given
+        let service = makeService()
+        let mockPhoto = FlickrImageList.Photo(
+            id: "53888638560",
+            server: "65535",
+            secret: "84b58e50cc"
+        )
+        let mockData = Data()
+        
+        mockNetworkService.load_mockMethod = { urlRequest in
+            let urlString = try XCTUnwrap(urlRequest.url?.absoluteString)
+            guard let urlComponents = URLComponents(string: urlString) else {
+                XCTFail("expected 'urlComponents' to be initialized")
+                throw MockError.failure
+            }
+            
+            XCTAssertEqual(urlComponents.scheme, "https")
+            XCTAssertEqual(urlComponents.host, "live.staticflickr.com")
+            XCTAssertEqual(urlComponents.path, "/65535/53888638560_84b58e50cc.jpg")
+            XCTAssertNil(urlComponents.queryItems)
+            
+            return mockData
+        }
+        
+        // when
+        let imageData = try await service.loadImage(from: mockPhoto)
+        
+        // then
+        XCTAssertEqual(imageData, mockData)
+    }
+    
     func testLoadImageList_givenError_thenThrowsError() async throws {
         // given
         let service = makeService()
@@ -43,10 +135,9 @@ final class FlickrServiceTests: XCTestCase {
         }
     }
     
-    func testloadImageList_givenData_thenReturnsData() async throws {
+    func testloadImageList_givenJSONData_thenReturnsData() async throws {
         // given
         let service = makeService()
-        let mockData = dataSuccess
         
         mockNetworkService.load_mockMethod = { urlRequest in
             let urlString = try XCTUnwrap(urlRequest.url?.absoluteString)
@@ -63,7 +154,7 @@ final class FlickrServiceTests: XCTestCase {
             
             // improvement: test all parameters..
             
-            return mockData
+            return dataSuccessOnePhoto
         }
         
         // when
@@ -91,7 +182,7 @@ private enum MockError: Error {
 
 // MARK: - JSON
 
-private let dataSuccess = """
+private let dataSuccessOnePhoto = """
 jsonFlickrApi({
     "photos": {
         "page": 1,
@@ -111,6 +202,18 @@ jsonFlickrApi({
                 "isfamily": 0
             }
         ]
+    }
+})
+""".data(using: .utf8)!
+
+private let dataSuccessEmptyList = """
+jsonFlickrApi({
+    "photos": {
+        "page": 1,
+        "pages": 1,
+        "perpage": 250,
+        "total": 0,
+        "photo": []
     }
 })
 """.data(using: .utf8)!

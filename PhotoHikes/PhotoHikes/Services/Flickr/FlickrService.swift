@@ -12,6 +12,7 @@ struct FlickrService: FlickrServiceProtocol {
     
     private enum Constant {
         static let apiURLString = "https://api.flickr.com/services/rest/"
+        static let photoURLString = "https://live.staticflickr.com"
         static let apiKey = "f28ecbe86a28cf727683cb576fdb63cb" // TODO find a way to enter your own API value
     }
     
@@ -21,9 +22,37 @@ struct FlickrService: FlickrServiceProtocol {
         self.networkService = networkService
     }
     
-    func loadImage() async throws -> FlickrImageList {
-        try await loadImageList()
+    // MARK: Image
+    
+    func loadImage() async throws -> Data {
+        let list = try await loadImageList()
+        
+        guard let photo = list.data.photos.first else {
+            throw FlickrServiceError.emptyPhotoList
+        }
+        
+        return try await loadImage(from: photo)
     }
+    
+    func loadImage(from photo: FlickrImageList.Photo) async throws -> Data {
+        let urlRequest = makeImageURLRequest(of: photo)
+        return try await networkService.load(urlRequest)
+    }
+    
+    func makeImageURLRequest(of photo: FlickrImageList.Photo) -> URLRequest {
+        // Docs: https://www.flickr.com/services/api/misc.urls.html
+        var urlComponents = URLComponents(string: Constant.photoURLString)
+        urlComponents?.path = "/\(photo.server)/\(photo.id)_\(photo.secret).jpg"
+        
+        guard let url = urlComponents?.url else {
+            // TODO: handle errors in a better way
+            fatalError("developer error: URL cannot be build!")
+        }
+        
+        return URLRequest(url: url)
+    }
+    
+    // MARK: Image List
     
     func loadImageList() async throws -> FlickrImageList {
         let urlRequest = makeImageListURLRequest()
