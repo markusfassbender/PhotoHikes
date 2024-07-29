@@ -21,17 +21,29 @@ struct FlickrService: FlickrServiceProtocol {
         self.networkService = networkService
     }
     
-    func loadImage() async throws -> Data {
+    func loadImage() async throws -> FlickrImageList {
         try await loadImageList()
     }
     
-    func loadImageList() async throws -> Data {
+    func loadImageList() async throws -> FlickrImageList {
         let urlRequest = makeImageListURLRequest()
         let data = try await networkService.load(urlRequest)
+        return try decodeImageList(data)
+    }
+    
+    private func decodeImageList(_ data: Data) throws -> FlickrImageList {
+        let decoder = JSONDecoder()
+        let jsonData = extractImageListJSONData(from: data)
+        return try decoder.decode(FlickrImageList.self, from: jsonData)
+    }
+    
+    private func extractImageListJSONData(from data: Data) -> Data {
+        // WORKAROUND: remove non json string around the decodable json!
+        var string = String(decoding: data, as: UTF8.self)
+        string = string.replacingOccurrences(of: "jsonFlickrApi(", with: "")
+        string.removeLast() // the last character is ")"
         
-        // TODO: implement decoding
-        
-        return data
+        return Data(string.utf8)
     }
     
     func makeImageListURLRequest() -> URLRequest {
@@ -43,8 +55,8 @@ struct FlickrService: FlickrServiceProtocol {
             URLQueryItem(name: "format", value: "json"),
             URLQueryItem(name: "media", value: "photos"),
             URLQueryItem(name: "method", value: "flickr.photos.search"),
-            URLQueryItem(name: "lat", value: "51"),
-            URLQueryItem(name: "lon", value: "7")
+            URLQueryItem(name: "lat", value: "51"), // TODO: set right coordinates
+            URLQueryItem(name: "lon", value: "7") // TODO: set right coordinates
         ]
         
         guard let url = urlComponents?.url else {

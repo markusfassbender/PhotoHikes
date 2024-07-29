@@ -46,7 +46,7 @@ final class FlickrServiceTests: XCTestCase {
     func testloadImageList_givenData_thenReturnsData() async throws {
         // given
         let service = makeService()
-        let mockData = Data()
+        let mockData = dataSuccess
         
         mockNetworkService.load_mockMethod = { urlRequest in
             let urlString = try XCTUnwrap(urlRequest.url?.absoluteString)
@@ -70,7 +70,7 @@ final class FlickrServiceTests: XCTestCase {
         let imageList = try await service.loadImageList()
         
         // then
-        XCTAssertEqual(imageList, mockData)
+        XCTAssertEqual(imageList.data.photos.first?.id, "53888638560")
     }
     
     // MARK: - Helpers
@@ -85,3 +85,29 @@ final class FlickrServiceTests: XCTestCase {
 private enum MockError: Error {
     case failure
 }
+
+// MARK: - JSON
+
+private let dataSuccess = """
+jsonFlickrApi({
+    "photos": {
+        "page": 1,
+        "pages": 853,
+        "perpage": 250,
+        "total": 213229,
+        "photo": [
+            {
+                "id": "53888638560",
+                "owner": "98501737@N06",
+                "secret": "84b58e50cc",
+                "server": "65535",
+                "farm": 66,
+                "title": "",
+                "ispublic": 1,
+                "isfriend": 0,
+                "isfamily": 0
+            }
+        ]
+    }
+})
+""".data(using: .utf8)!

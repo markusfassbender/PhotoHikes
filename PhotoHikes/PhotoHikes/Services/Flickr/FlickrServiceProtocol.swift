@@ -8,5 +8,5 @@
 import Foundation
 
 protocol FlickrServiceProtocol {
-    func loadImage() async throws -> Data
+    func loadImage() async throws -> FlickrImageList
 }

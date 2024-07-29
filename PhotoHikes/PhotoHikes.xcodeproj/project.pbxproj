@@ -14,6 +14,7 @@
 		28C9C6662C4FFDD00055A357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28C9C6652C4FFDD00055A357 /* Assets.xcassets */; };
 		28C9C6692C4FFDD00055A357 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28C9C6682C4FFDD00055A357 /* Preview Assets.xcassets */; };
 		28E15D0D2C57CEF100715BDC /* FlickrServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E15D0C2C57CEF100715BDC /* FlickrServiceTests.swift */; };
+		28E15D102C57D44A00715BDC /* FlickrImageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E15D0F2C57D44A00715BDC /* FlickrImageList.swift */; };
 		28EFAE1C2C50026500FAA6B2 /* TrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE1B2C50026500FAA6B2 /* TrackingView.swift */; };
 		28EFAE1E2C50042800FAA6B2 /* TrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE1D2C50042800FAA6B2 /* TrackingViewModel.swift */; };
 		28EFAE202C5005E400FAA6B2 /* PhotoHikesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EFAE1F2C5005E400FAA6B2 /* PhotoHikesView.swift */; };
@@ -45,6 +46,7 @@
 		28C9C66E2C4FFDD10055A357 /* PhotoHikesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoHikesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C9C68B2C4FFF290055A357 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		28E15D0C2C57CEF100715BDC /* FlickrServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlickrServiceTests.swift; path = Flickr/FlickrServiceTests.swift; sourceTree = "<group>"; };
+		28E15D0F2C57D44A00715BDC /* FlickrImageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrImageList.swift; sourceTree = "<group>"; };
 		28EFAE1B2C50026500FAA6B2 /* TrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingView.swift; sourceTree = "<group>"; };
 		28EFAE1D2C50042800FAA6B2 /* TrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingViewModel.swift; sourceTree = "<group>"; };
 		28EFAE1F2C5005E400FAA6B2 /* PhotoHikesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHikesView.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 		28BFF88E2C56BBAA00C272EA /* Flickr */ = {
 			isa = PBXGroup;
 			children = (
+				28E15D0E2C57D43F00715BDC /* Models */,
 				28BFF88F2C56BBB500C272EA /* FlickrService.swift */,
 				28BFF8912C56BC0300C272EA /* FlickrServiceProtocol.swift */,
 			);
@@ -138,6 +141,14 @@
 				28E15D0C2C57CEF100715BDC /* FlickrServiceTests.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		28E15D0E2C57D43F00715BDC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				28E15D0F2C57D44A00715BDC /* FlickrImageList.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		28EFAE1A2C50025500FAA6B2 /* TrackingScreen */ = {
@@ -325,6 +336,7 @@
 				28EFAE2C2C52230100FAA6B2 /* LocationService.swift in Sources */,
 				28EFAE1E2C50042800FAA6B2 /* TrackingViewModel.swift in Sources */,
 				28C9C6622C4FFDCC0055A357 /* PhotoHikesApp.swift in Sources */,
+				28E15D102C57D44A00715BDC /* FlickrImageList.swift in Sources */,
 				28EFAE2E2C5229F500FAA6B2 /* LocationServiceError.swift in Sources */,
 				28BFF8922C56BC0300C272EA /* FlickrServiceProtocol.swift in Sources */,
 				28EFAE322C53A5DE00FAA6B2 /* LocationServiceProtocol.swift in Sources */,
