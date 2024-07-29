@@ -39,7 +39,7 @@ struct FlickrService: FlickrServiceProtocol {
         return try await networkService.load(urlRequest)
     }
     
-    func makeImageURLRequest(of photo: FlickrImageList.Photo) -> URLRequest {
+    private func makeImageURLRequest(of photo: FlickrImageList.Photo) -> URLRequest {
         // Docs: https://www.flickr.com/services/api/misc.urls.html
         var urlComponents = URLComponents(string: Constant.photoURLString)
         urlComponents?.path = "/\(photo.server)/\(photo.id)_\(photo.secret).jpg"
@@ -75,7 +75,7 @@ struct FlickrService: FlickrServiceProtocol {
         return Data(string.utf8)
     }
     
-    func makeImageListURLRequest(coordinates: FlickrSearchCoordinates) -> URLRequest {
+    private func makeImageListURLRequest(coordinates: FlickrSearchCoordinates) -> URLRequest {
         // Docs: https://www.flickr.com/services/api/flickr.photos.search.html
         var urlComponents = URLComponents(string: Constant.apiURLString)
         urlComponents?.queryItems = [
