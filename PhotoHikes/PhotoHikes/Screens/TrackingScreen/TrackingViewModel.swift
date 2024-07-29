@@ -7,17 +7,21 @@
 
 import SwiftUI
 import CoreLocation
+import NetworkService
 
 @Observable
 final class TrackingViewModel {
     
     private var locationService: (any LocationServiceProtocol)!
+    private var flickrService: (any FlickrServiceProtocol)!
     
     var isTracking: Bool
+    var trackedImages: [UIImage]
     var errorMessage: LocalizedStringKey?
     
     init() {
         isTracking = false
+        trackedImages = []
     }
     
     func setUp() async {
@@ -31,6 +35,9 @@ final class TrackingViewModel {
                 self?.errorMessage = "unhandled error: \(String(describing: error))!"
             }
         }
+        
+        let networkService = NetworkService(urlSession: .shared)
+        flickrService = FlickrService(networkService: networkService)
     }
     
     // MARK: - Tracking
@@ -68,5 +75,23 @@ final class TrackingViewModel {
     
     private func processLocationUpdate(_ location: CLLocation) {
         debugPrint("location update: \(String(describing: location))")
+        
+        let coordinates = FlickrSearchCoordinates(
+            latitude: location.coordinate.latitude,
+            longitude: location.coordinate.longitude
+        )
+        
+        Task { [weak self] in
+            guard let self else { return }
+            let image = try await flickrService.loadImage(at: coordinates)
+            
+            if let uiImage = UIImage(data: image) {
+                self.trackedImages.insert(uiImage, at: 0)
+            } else {
+                // TODO: handle error, show gray image?
+                debugPrint("invalid image loaded!")
+            }
+        }
+        
     }
 }
