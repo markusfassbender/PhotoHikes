@@ -7,17 +7,21 @@
 
 import SwiftUI
 import CoreLocation
+import NetworkService
 
 @Observable
 final class TrackingViewModel {
     
     private var locationService: (any LocationServiceProtocol)!
+    private var flickrService: (any FlickrServiceProtocol)!
     
     var isTracking: Bool
+    var trackedImages: [UIImage]
     var errorMessage: LocalizedStringKey?
     
     init() {
         isTracking = false
+        trackedImages = []
     }
     
     func setUp() async {
@@ -31,6 +35,9 @@ final class TrackingViewModel {
                 self?.errorMessage = "unhandled error: \(String(describing: error))!"
             }
         }
+        
+        let networkService = NetworkService(urlSession: .shared)
+        flickrService = FlickrService(networkService: networkService)
     }
     
     // MARK: - Tracking
@@ -40,16 +47,16 @@ final class TrackingViewModel {
         
         Task {
             if isTracking {
-                isTracking = false
                 await stopTracking()
             } else {
-                isTracking = true
                 await startTracking()
             }
         }
     }
     
     private func startTracking() async {
+        isTracking = true
+        
         do {
             try await locationService.requestAuthorization()
             await locationService.startUpdatingLocation()
@@ -63,10 +70,37 @@ final class TrackingViewModel {
     }
     
     private func stopTracking() async {
+        isTracking = false
         await locationService.stopUpdatingLocation()
     }
     
     private func processLocationUpdate(_ location: CLLocation) {
         debugPrint("location update: \(String(describing: location))")
+        
+        let coordinates = FlickrSearchCoordinates(
+            latitude: location.coordinate.latitude,
+            longitude: location.coordinate.longitude
+        )
+        
+        Task { [weak self] in
+            guard let self else { return }
+            
+            do {
+                let image = try await flickrService.loadImage(at: coordinates)
+                
+                if let uiImage = UIImage(data: image) {
+                    self.trackedImages.insert(uiImage, at: 0)
+                } else {
+                    // returned data from the service expected to contain valid image data.
+                    assertionFailure("invalid image loaded!")
+                }
+            } catch {
+                // handle Flickr api errors in a better way
+                errorMessage = "Images cannot be loaded from Flickr, stopped tracking!"
+                await stopTracking()
+            }
+            
+        }
+        
     }
 }
