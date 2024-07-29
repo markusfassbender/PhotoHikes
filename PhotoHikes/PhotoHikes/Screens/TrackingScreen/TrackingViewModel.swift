@@ -47,16 +47,16 @@ final class TrackingViewModel {
         
         Task {
             if isTracking {
-                isTracking = false
                 await stopTracking()
             } else {
-                isTracking = true
                 await startTracking()
             }
         }
     }
     
     private func startTracking() async {
+        isTracking = true
+        
         do {
             try await locationService.requestAuthorization()
             await locationService.startUpdatingLocation()
@@ -70,6 +70,7 @@ final class TrackingViewModel {
     }
     
     private func stopTracking() async {
+        isTracking = false
         await locationService.stopUpdatingLocation()
     }
     
@@ -83,14 +84,22 @@ final class TrackingViewModel {
         
         Task { [weak self] in
             guard let self else { return }
-            let image = try await flickrService.loadImage(at: coordinates)
             
-            if let uiImage = UIImage(data: image) {
-                self.trackedImages.insert(uiImage, at: 0)
-            } else {
-                // TODO: handle error, show gray image?
-                debugPrint("invalid image loaded!")
+            do {
+                let image = try await flickrService.loadImage(at: coordinates)
+                
+                if let uiImage = UIImage(data: image) {
+                    self.trackedImages.insert(uiImage, at: 0)
+                } else {
+                    // returned data from the service expected to contain valid image data.
+                    assertionFailure("invalid image loaded!")
+                }
+            } catch {
+                // handle Flickr api errors in a better way
+                errorMessage = "Images cannot be loaded from Flickr, stopped tracking!"
+                await stopTracking()
             }
+            
         }
         
     }
