@@ -12,15 +12,18 @@ import XCTest
 
 final class FlickrServiceTests: XCTestCase {
     
+    private var mockCoordinates: FlickrSearchCoordinates!
     private var mockNetworkService: NetworkServiceMock!
     
     override func setUp() {
         super.setUp()
+        mockCoordinates = FlickrSearchCoordinates(latitude: 50.7381021, longitude: 7.1101411)
         mockNetworkService = NetworkServiceMock()
     }
     
     override func tearDown() {
         mockNetworkService = nil
+        mockCoordinates = nil
         super.tearDown()
     }
     
@@ -35,7 +38,7 @@ final class FlickrServiceTests: XCTestCase {
         // when
         // then
         do {
-            _ = try await service.loadImage()
+            _ = try await service.loadImage(at: mockCoordinates)
         } catch MockError.failure {
             // success
         } catch {
@@ -52,7 +55,7 @@ final class FlickrServiceTests: XCTestCase {
         // when
         // then
         do {
-            _ = try await service.loadImage()
+            _ = try await service.loadImage(at: mockCoordinates)
         } catch FlickrServiceError.emptyPhotoList {
             // success
         } catch {
@@ -127,7 +130,7 @@ final class FlickrServiceTests: XCTestCase {
         // when
         // then
         do {
-            _ = try await service.loadImageList()
+            _ = try await service.loadImageList(at: mockCoordinates)
         } catch MockError.failure {
             // success
         } catch {
@@ -151,6 +154,8 @@ final class FlickrServiceTests: XCTestCase {
             XCTAssertEqual(urlComponents.path, "/services/rest/")
             XCTAssert(urlComponents.queryItems?.contains { $0.name == "api_key" } == true)
             XCTAssertEqual(urlComponents.queryItems?.first { $0.name == "method" }?.value, "flickr.photos.search")
+            XCTAssertEqual(urlComponents.queryItems?.first { $0.name == "lat" }?.value, "50.73810")
+            XCTAssertEqual(urlComponents.queryItems?.first { $0.name == "lon" }?.value, "7.11014")
             
             // improvement: test all parameters..
             
@@ -158,7 +163,7 @@ final class FlickrServiceTests: XCTestCase {
         }
         
         // when
-        let imageList = try await service.loadImageList()
+        let imageList = try await service.loadImageList(at: mockCoordinates)
         
         // then
         let photo = imageList.data.photos.first

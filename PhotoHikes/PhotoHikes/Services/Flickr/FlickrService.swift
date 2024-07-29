@@ -13,7 +13,7 @@ struct FlickrService: FlickrServiceProtocol {
     private enum Constant {
         static let apiURLString = "https://api.flickr.com/services/rest/"
         static let photoURLString = "https://live.staticflickr.com"
-        static let apiKey = "f28ecbe86a28cf727683cb576fdb63cb" // TODO find a way to enter your own API value
+        static let apiKey = "f28ecbe86a28cf727683cb576fdb63cb"
     }
     
     private let networkService: any NetworkServiceProtocol
@@ -24,8 +24,8 @@ struct FlickrService: FlickrServiceProtocol {
     
     // MARK: Image
     
-    func loadImage() async throws -> Data {
-        let list = try await loadImageList()
+    func loadImage(at coordinates: FlickrSearchCoordinates) async throws -> Data {
+        let list = try await loadImageList(at: coordinates)
         
         guard let photo = list.data.photos.first else {
             throw FlickrServiceError.emptyPhotoList
@@ -54,8 +54,8 @@ struct FlickrService: FlickrServiceProtocol {
     
     // MARK: Image List
     
-    func loadImageList() async throws -> FlickrImageList {
-        let urlRequest = makeImageListURLRequest()
+    func loadImageList(at coordinates: FlickrSearchCoordinates) async throws -> FlickrImageList {
+        let urlRequest = makeImageListURLRequest(coordinates: coordinates)
         let data = try await networkService.load(urlRequest)
         return try decodeImageList(data)
     }
@@ -75,17 +75,17 @@ struct FlickrService: FlickrServiceProtocol {
         return Data(string.utf8)
     }
     
-    func makeImageListURLRequest() -> URLRequest {
+    func makeImageListURLRequest(coordinates: FlickrSearchCoordinates) -> URLRequest {
         // Docs: https://www.flickr.com/services/api/flickr.photos.search.html
         var urlComponents = URLComponents(string: Constant.apiURLString)
         urlComponents?.queryItems = [
             URLQueryItem(name: "api_key", value: Constant.apiKey),
-            URLQueryItem(name: "content_types", value: "0,1"),
+            URLQueryItem(name: "content_types", value: "0"),
             URLQueryItem(name: "format", value: "json"),
             URLQueryItem(name: "media", value: "photos"),
             URLQueryItem(name: "method", value: "flickr.photos.search"),
-            URLQueryItem(name: "lat", value: "51"), // TODO: set right coordinates
-            URLQueryItem(name: "lon", value: "7") // TODO: set right coordinates
+            URLQueryItem(name: "lat", value: formattedCoordinate(coordinates.latitude)),
+            URLQueryItem(name: "lon", value: formattedCoordinate(coordinates.longitude))
         ]
         
         guard let url = urlComponents?.url else {
@@ -94,5 +94,12 @@ struct FlickrService: FlickrServiceProtocol {
         }
         
         return URLRequest(url: url)
+    }
+    
+    /// Returns a formatted coordinate with a precision of approximately 1meter.
+    private func formattedCoordinate(_ coordinate: Double) -> String {
+        // Coordinates Decimal Rounding: https://en.wikipedia.org/wiki/Decimal_degrees
+        // Would it make sense to reduce precision to improve the user's privacy?
+        String(format: "%.5f", coordinate)
     }
 }
