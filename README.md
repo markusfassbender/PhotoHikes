@@ -22,7 +22,7 @@ The iOS devices requires Location Services and GPS capabilities to install the a
   - [ ] enable power-saving features
 - [ ] implement dependency injection
 - [x] add network service swift package
-- [ ] add flickr swift package
+- [x] add flickr service
 - [ ] load images from flickr
 
 ### Questions
@@ -31,3 +31,11 @@ The iOS devices requires Location Services and GPS capabilities to install the a
   - api rating limit
   - performance on scrolling with many images
   - other reasons?
+
+
+## Flickr - Nice To have
+- inject the Flickr api key instead of hardcoding it
+- handle Flickr api errors in a better way
+- load different photo sizes from Flickr
+- reduce Flickr coordinate precision to improve the user's privacy?
+ 
