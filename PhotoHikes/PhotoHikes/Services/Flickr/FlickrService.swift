@@ -25,7 +25,7 @@ struct FlickrService: FlickrServiceProtocol {
         try await loadImageList()
     }
     
-    private func loadImageList() async throws -> Data {
+    func loadImageList() async throws -> Data {
         let urlRequest = makeImageListURLRequest()
         let data = try await networkService.load(urlRequest)
         
