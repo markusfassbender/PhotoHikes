@@ -11,9 +11,7 @@ Requires Xcode 15.4 without any additional tooling.
 The iOS devices requires Location Services and GPS capabilities to install the app. 
 
 
-## TODOs
-
-### Steps
+## Work Items Done
 - [x] setup project
 - [x] add initial screen with start/stop button
 - location services
