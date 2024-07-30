@@ -10,9 +10,13 @@
 import Foundation
 
 struct FlickrServiceMock: FlickrServiceProtocol {
-    func loadImage(at coordinates: FlickrSearchCoordinates) async throws -> Data {
-        fatalError("not implemented")
+    func loadImage(at coordinates: FlickrSearchCoordinates) async throws -> Data { 
+        throw FlickrServiceMockError.failure
     }
+}
+
+enum FlickrServiceMockError: Error {
+    case failure
 }
 
 #endif
