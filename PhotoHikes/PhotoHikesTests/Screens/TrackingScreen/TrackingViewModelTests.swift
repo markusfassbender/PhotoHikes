@@ -52,13 +52,17 @@ final class TrackingViewModelTests: XCTestCase {
         XCTAssert(trackedPhotos.isEmpty)
     }
     
+    @MainActor
     func testInitial_given_thenErrorMessageIsNil() async {
+        // Without the @MainActor annocation one warning appears: "Non-sendable type 'LocalizedStringKey?'".
+        // It might be updated by Apple with one of the next Swift versions or one needs to find another way to access the Sendable value.
+        
         // given
-        let viewModel = await makeViewModel()
+        let viewModel = makeViewModel()
         
         // when
         // then
-        let errorMessage = await viewModel.errorMessage
+        let errorMessage = viewModel.errorMessage
         XCTAssertNil(errorMessage)
     }
     
