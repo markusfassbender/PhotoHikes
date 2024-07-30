@@ -15,39 +15,32 @@ final class TrackingViewModelTests: XCTestCase {
     
     // MARK: isTracking
     
-    func testInitial_given_when_thenIsNotTracking() {
+    func testInitial_given_when_thenIsNotTracking() async {
         // given
-        let viewModel = makeViewModel()
+        let viewModel = await makeViewModel()
         
         // when
-        // then
-        XCTAssertFalse(viewModel.isTracking)
-    }
-    
-    func testInitial_given_whenToggleIsTracking_thenIsTracking() {
-        // given
-        let viewModel = makeViewModel()
-        
-        // when
-        viewModel.isTracking.toggle()
+        let isTracking = await viewModel.isTracking
         
         // then
-        XCTAssertTrue(viewModel.isTracking)
+        XCTAssertFalse(isTracking)
     }
     
     func testSetUp_given_when_thenIsNotTracking() async {
         // given
-        let viewModel = makeViewModel()
+        let viewModel = await makeViewModel()
         
         // when
         await viewModel.setUp()
+        let isTracking = await viewModel.isTracking
         
         // then
-        XCTAssertFalse(viewModel.isTracking)
+        XCTAssertFalse(isTracking)
     }
     
     // MARK: - Helpers
     
+    @MainActor
     private func makeViewModel() -> TrackingViewModel {
         TrackingViewModel()
     }

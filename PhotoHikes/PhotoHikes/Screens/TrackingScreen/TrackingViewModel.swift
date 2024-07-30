@@ -15,9 +15,9 @@ final class TrackingViewModel {
     private var locationService: (any LocationServiceProtocol)!
     private var flickrService: (any FlickrServiceProtocol)!
     
-    var isTracking: Bool
-    var trackedPhotos: [UIImage]
-    var errorMessage: LocalizedStringKey?
+    private(set) var isTracking: Bool
+    private(set) var trackedPhotos: [UIImage]
+    private(set) var errorMessage: LocalizedStringKey?
     
     init() {
         isTracking = false
