@@ -11,32 +11,38 @@ Requires Xcode 15.4 without any additional tooling.
 The iOS devices requires Location Services and GPS capabilities to install the app. 
 
 
-## TODOs
+## Work Items Done
+- [x] Setup project
+- [x] Add initial screen with start/stop button
+- Location Services
+  - [x] Implement CoreLocation
+  - [x] Enable power-saving features
+- [x] Add network service swift package
+- [x] Add flickr service
+- [x] Show images from flickr
+- [x] Improve flickr photo selection
+- [x] Fix view crashing on real device
+- [x] Implement dependency injection
+- [x] Fix keep photos when stopped
 
-### Steps
-- [x] setup project
-- [x] add initial screen with start/stop button
-- location services
-  - [x] implement CoreLocation
-  - [x] enable power-saving features
-- [x] add network service swift package
-- [x] add flickr service
-- [x] show images from flickr
-- [x] improve flickr photo selection
-- [x] fix view crashing on real device
-- [x] implement dependency injection
-- [x] fix keep photos when stopped
 
-### Questions
-- why is it mentioned that "it should work for at least a two hour walk"?
-  - battery life
-  - api rating limit
-  - performance on scrolling with many images
-  - other reasons?
+## Ideas to improve in future
+- On start tracking, it sometimes downloads multiple photos in parallel. It would be more convenient for the user to see only one photo at the beginning.
+- Enhance the Flickr search filter to find better matching photos for hiking.
+- Select a random photo from Flickr instead of always displaying the first photo on the list.
+
+
+## Architecture
+I chose an MVVM architecture to structure the code. This approach offers the benefit of making view models testable independently from the view logic.
+
 
 ## Dependency Injection
 In order to write proper unit tests it's important to be able to mock dependencies, e.g. services. Although I have quite some expierence with dependency injection via constructor or resolver, it was a bit tricky in this project, because of the pure SwiftUI approach. Other projects I worked had a app delegate and other places to setup dependencies before adding a view Controller to the window.
-Nevertheless it was fun to find a good way and I decided to go for a short loading screen during the async dependency set up. 
+Nevertheless it was fun to find a good way and I decided to go for a short loading screen during the async dependency set up.
+
+
+## Unit Tests
+For the Swift package `NetworkService`, as well as the services and view models, I've added unit tests. Although I haven't achieved a very high test coverage due to the extended time I've already spent on the project, the given set up with dependency injection and protocols ensures high testability.  
 
 
 ## Flickr
@@ -58,6 +64,13 @@ Nevertheless it was fun to find a good way and I decided to go for a short loadi
 - The `desiredAccuracy` is set to `kCLLocationAccuracyNearestTenMeters` as it saves battery and should be precise enough to record the hiking track with photos.
 - The `pausesLocationUpdatesAutomatically` property should be considered in the future to improve battery usage.
 - It would be interesting to utilize the concurrent iOS 17 API `CLLocationUpdate.liveUpdates`, but I didn't fully understand from the documentation how to set the requirements, such as the distance filter, correctly.
-  
-## Other
-- I've added `@MainActor` to the view and view model explicitly, because it crashed on my real device. I have no experience with the new iOS 17 Observation API and didn't find more specifications in the [Apple migration guide](https://developer.apple.com/documentation/swiftui/migrating-from-the-observable-object-protocol-to-the-observable-macro). Maybe there is a better approach without enforcing logic via main actor.
+
+
+## Performance and Battery Life Considerations
+- I am not sure what the requirement "it should work for at least a two-hour walk" is expected to be technically transferred to. I assume it’s about battery life or performance while scrolling through many images.
+- Unfortunately, I haven't had the chance to do a long test walk with the final app yet to analyze the battery life. However, I’ve added the distance filter and desired accuracy settings to reduce power consumption.
+- Using SwiftUI `LazyVStack` should not cause performance issues with many photos, as it is designed to render only what is on the screen.
+
+
+## Main Actor Annotations
+I've added the `@MainActor` annotation views and view models explicitly, because without the annotation it crashed on my real device. Yet I have no experience with the new iOS 17 Observation APIs I've used here and didn't find more specifications in the [Apple migration guide](https://developer.apple.com/documentation/swiftui/migrating-from-the-observable-object-protocol-to-the-observable-macro). Maybe there is a better approach without enforcing logic via main actor.
