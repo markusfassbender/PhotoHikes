@@ -45,10 +45,9 @@ final class LocationService: NSObject, LocationServiceProtocol {
         case .authorizedWhenInUse, .authorizedAlways:
             return
         case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-            
             try await withCheckedThrowingContinuation { continuation in
                 authorizationContinuation = continuation
+                locationManager.requestWhenInUseAuthorization()
             }
         case .denied, .restricted:
             throw LocationServiceError.invalidAuthorizationStatus

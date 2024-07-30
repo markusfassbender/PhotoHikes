@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 struct TrackingView: View {
     
     @State var viewModel = TrackingViewModel()
@@ -26,7 +27,7 @@ struct TrackingView: View {
                 }
             }
             .task {
-                await viewModel.setUp()
+                viewModel.setUp()
             }
     }
     

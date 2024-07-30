@@ -24,6 +24,7 @@ The iOS devices requires Location Services and GPS capabilities to install the a
 - [x] add flickr service
 - [x] show images from flickr
 - [x] improve flickr photo selection
+- [x] fix view crashing on real device
 
 ### Questions
 - why is it mentioned that "it should work for at least a two hour walk"?
@@ -53,3 +54,5 @@ The iOS devices requires Location Services and GPS capabilities to install the a
 - The `pausesLocationUpdatesAutomatically` property should be considered in the future to improve battery usage.
 - It would be interesting to utilize the concurrent iOS 17 API `CLLocationUpdate.liveUpdates`, but I didn't fully understand from the documentation how to set the requirements, such as the distance filter, correctly.
   
+## Other
+- I've added `@MainActor` to the view and view model explicitly, because it crashed on my real device. I have no experience with the new iOS 17 Observation API and didn't find more specifications in the [Apple migration guide](https://developer.apple.com/documentation/swiftui/migrating-from-the-observable-object-protocol-to-the-observable-macro). Maybe there is a better approach without enforcing logic via main actor.
