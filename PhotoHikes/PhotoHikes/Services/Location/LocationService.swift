@@ -11,9 +11,13 @@ import CoreLocation
 @MainActor @Observable
 final class LocationService: NSObject, LocationServiceProtocol {
     
+    private enum Constant {
+        static let minDistanceFilter: CLLocationDistance = 100
+    }
+    
     // MARK: - Properties
     
-    private let locationManager = CLLocationManager()
+    private let locationManager: CLLocationManager
     
     private var authorizationContinuation: CheckedContinuation<Void, any Error>?
     
@@ -23,6 +27,8 @@ final class LocationService: NSObject, LocationServiceProtocol {
     // MARK: - Initialize
     
     override init() {
+        locationManager = CLLocationManager()
+        
         super.init()
         // self initialized
         locationManager.delegate = self
@@ -52,6 +58,11 @@ final class LocationService: NSObject, LocationServiceProtocol {
     }
 
     func startUpdatingLocation() {
+        locationManager.activityType = .fitness
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.distanceFilter = Constant.minDistanceFilter
+        locationManager.pausesLocationUpdatesAutomatically = false
+        
         locationManager.startUpdatingLocation()
     }
     
