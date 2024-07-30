@@ -56,6 +56,7 @@ final class TrackingViewModel {
     
     private func startTracking() async {
         isTracking = true
+        trackedPhotos = []
         
         do {
             try await locationService.requestAuthorization()
