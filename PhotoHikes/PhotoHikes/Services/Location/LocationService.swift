@@ -42,15 +42,15 @@ final class LocationService: NSObject, LocationServiceProtocol {
     
     func requestAuthorization() async throws {
         switch locationManager.authorizationStatus {
-        case .authorizedAlways:
+        case .authorizedWhenInUse, .authorizedAlways:
             return
         case .notDetermined:
-            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
             
             try await withCheckedThrowingContinuation { continuation in
                 authorizationContinuation = continuation
             }
-        case .denied, .restricted, .authorizedWhenInUse:
+        case .denied, .restricted:
             throw LocationServiceError.invalidAuthorizationStatus
         @unknown default:
             throw LocationServiceError.invalidAuthorizationStatus
@@ -75,9 +75,11 @@ final class LocationService: NSObject, LocationServiceProtocol {
 
 extension LocationService: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        guard case .authorizedAlways = manager.authorizationStatus else {
+        switch manager.authorizationStatus {
+        case .authorizedWhenInUse, .authorizedAlways:
+            break
+        default:
             authorizationContinuation?.resume(throwing: LocationServiceError.invalidAuthorizationStatus)
-            return
         }
         
         guard case .fullAccuracy = manager.accuracyAuthorization else {
