@@ -12,12 +12,16 @@ import NetworkService
 @Observable @MainActor
 final class TrackingViewModel {
     
+    // MARK: - Properties
+    
     private let flickrService: any FlickrServiceProtocol
     private let locationService: any LocationServiceProtocol
 
     private(set) var isTracking: Bool
     private(set) var trackedPhotos: [UIImage]
     private(set) var errorMessage: LocalizedStringKey?
+    
+    // MARK: - Initialize
     
     init(
         flickrService: any FlickrServiceProtocol,
