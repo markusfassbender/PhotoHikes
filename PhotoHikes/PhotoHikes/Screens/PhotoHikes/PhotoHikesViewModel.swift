@@ -12,7 +12,8 @@ final class PhotoHikesViewModel {
     
     // MARK: - Properties
     
-    let dependencies: AppDependency
+    private let dependencies: AppDependency
+    
     var trackingViewModel: TrackingViewModel?
     
     // MARK: - Initialize
