@@ -85,7 +85,8 @@ struct FlickrService: FlickrServiceProtocol {
             URLQueryItem(name: "media", value: "photos"),
             URLQueryItem(name: "method", value: "flickr.photos.search"),
             URLQueryItem(name: "lat", value: formattedCoordinate(coordinates.latitude)),
-            URLQueryItem(name: "lon", value: formattedCoordinate(coordinates.longitude))
+            URLQueryItem(name: "lon", value: formattedCoordinate(coordinates.longitude)),
+            URLQueryItem(name: "tags", value: "outdoor,nature,landscape")
         ]
         
         guard let url = urlComponents?.url else {
