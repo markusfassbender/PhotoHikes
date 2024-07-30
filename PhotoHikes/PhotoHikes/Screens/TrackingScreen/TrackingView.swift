@@ -31,29 +31,53 @@ struct TrackingView: View {
     @ViewBuilder
     private var description: some View {
         if let errorMessage = viewModel.errorMessage {
-            Text(errorMessage)
+            errorView(errorMessage)
         } else if viewModel.isTracking {
             if viewModel.trackedPhotos.isEmpty {
-                Text("Tracking started...")
+                trackingStartedView
             } else {
-                ScrollView {
-                    LazyVStack(content: {
-                        ForEach(viewModel.trackedPhotos, id: \.self) { uiImage in
-                            Image(uiImage: uiImage)
-                                .resizable()
-                                .scaledToFit()
-                        }
-                    })
-                }
+                trackedPhotosView
             }
         } else {
-            VStack {
-                Text("🏃‍➡️")
-                    .font(.largeTitle)
-                    .padding(.bottom)
-                
-                Text("Start tracking and move to automatically add new photos to the stream.")
+            if viewModel.trackedPhotos.isEmpty {
+                placeholderView
+            } else {
+                trackedPhotosView
             }
+        }
+    }
+    
+    @ViewBuilder
+    private func errorView(_ errorMessage: LocalizedStringKey) -> some View {
+        Text(errorMessage)
+    }
+    
+    @ViewBuilder
+    private var placeholderView: some View {
+        VStack {
+            Text("🏃‍➡️")
+                .font(.largeTitle)
+                .padding(.bottom)
+            
+            Text("Start tracking and move to automatically add new photos to the stream.")
+        }
+    }
+    
+    @ViewBuilder
+    private var trackingStartedView: some View {
+        Text("Tracking started...")
+    }
+    
+    @ViewBuilder
+    private var trackedPhotosView: some View {
+        ScrollView {
+            LazyVStack(content: {
+                ForEach(viewModel.trackedPhotos, id: \.self) { uiImage in
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFit()
+                }
+            })
         }
     }
 }
