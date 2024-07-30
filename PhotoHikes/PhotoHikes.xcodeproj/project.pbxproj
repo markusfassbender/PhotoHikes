@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		28B56AA22C59655300A4DE24 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B56AA12C59655300A4DE24 /* AppDependency.swift */; };
 		28B56AA42C59687100A4DE24 /* PhotoHikesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B56AA32C59687100A4DE24 /* PhotoHikesViewModel.swift */; };
+		28B56AA62C596C9100A4DE24 /* FlickrServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B56AA52C596C9100A4DE24 /* FlickrServiceMock.swift */; };
 		28BFF8902C56BBB500C272EA /* FlickrService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BFF88F2C56BBB500C272EA /* FlickrService.swift */; };
 		28BFF8922C56BC0300C272EA /* FlickrServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BFF8912C56BC0300C272EA /* FlickrServiceProtocol.swift */; };
 		28BFF8952C56BCA100C272EA /* NetworkService in Frameworks */ = {isa = PBXBuildFile; productRef = 28BFF8942C56BCA100C272EA /* NetworkService */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		28B56AA12C59655300A4DE24 /* AppDependency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		28B56AA32C59687100A4DE24 /* PhotoHikesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHikesViewModel.swift; sourceTree = "<group>"; };
+		28B56AA52C596C9100A4DE24 /* FlickrServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrServiceMock.swift; sourceTree = "<group>"; };
 		28BFF88F2C56BBB500C272EA /* FlickrService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrService.swift; sourceTree = "<group>"; };
 		28BFF8912C56BC0300C272EA /* FlickrServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrServiceProtocol.swift; sourceTree = "<group>"; };
 		28C9C65E2C4FFDCC0055A357 /* PhotoHikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoHikes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,8 +92,9 @@
 			children = (
 				28E15D0E2C57D43F00715BDC /* Models */,
 				28BFF88F2C56BBB500C272EA /* FlickrService.swift */,
-				28BFF8912C56BC0300C272EA /* FlickrServiceProtocol.swift */,
 				28E15D132C57DBAC00715BDC /* FlickrServiceError.swift */,
+				28B56AA52C596C9100A4DE24 /* FlickrServiceMock.swift */,
+				28BFF8912C56BC0300C272EA /* FlickrServiceProtocol.swift */,
 			);
 			path = Flickr;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				28EFAE2C2C52230100FAA6B2 /* LocationService.swift in Sources */,
 				28E15D142C57DBAC00715BDC /* FlickrServiceError.swift in Sources */,
 				28B56AA22C59655300A4DE24 /* AppDependency.swift in Sources */,
+				28B56AA62C596C9100A4DE24 /* FlickrServiceMock.swift in Sources */,
 				28EFAE1E2C50042800FAA6B2 /* TrackingViewModel.swift in Sources */,
 				28C9C6622C4FFDCC0055A357 /* PhotoHikesApp.swift in Sources */,
 				28E15D102C57D44A00715BDC /* FlickrImageList.swift in Sources */,
