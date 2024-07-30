@@ -23,6 +23,7 @@ The iOS devices requires Location Services and GPS capabilities to install the a
 - [x] add network service swift package
 - [x] add flickr service
 - [x] show images from flickr
+- [x] improve flickr photo selection
 
 ### Questions
 - why is it mentioned that "it should work for at least a two hour walk"?
