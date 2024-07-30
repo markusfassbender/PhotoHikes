@@ -12,23 +12,15 @@ struct PhotoHikesView: View {
     @State var viewModel: PhotoHikesViewModel
     
     var body: some View {
-        if viewModel.didInitializeDependencies {
+        if let trackingViewModel = viewModel.trackingViewModel {
+            NavigationStack() {
+                TrackingView(viewModel: trackingViewModel)
+            }
+        } else {
             Text("Loading...")
                 .task {
                     await viewModel.setUp()
                 }
-        } else {
-            NavigationStack() {
-                TrackingView()
-            }
         }
     }
 }
-
-// MARK: - Preview
-
-#Preview {
-    let viewModel = PhotoHikesViewModel(dependencies: AppDependency())
-    return PhotoHikesView(viewModel: viewModel)
-}
-

@@ -10,7 +10,7 @@ import SwiftUI
 @MainActor
 struct TrackingView: View {
     
-    @State var viewModel = TrackingViewModel()
+    @State var viewModel: TrackingViewModel
     
     private var trackingButtonTitle: LocalizedStringKey {
         viewModel.isTracking ? "Stop" : "Start"
@@ -25,9 +25,6 @@ struct TrackingView: View {
                         viewModel.trackingButtonTapped()
                     }
                 }
-            }
-            .task {
-                viewModel.setUp()
             }
     }
     
@@ -64,5 +61,9 @@ struct TrackingView: View {
 // MARK: - Preview
 
 #Preview {
-    TrackingView()
+    let viewModel = TrackingViewModel(
+        flickrService: FlickrServiceMock(),
+        locationService: LocationServiceMock()
+    )
+    return TrackingView(viewModel: viewModel)
 }

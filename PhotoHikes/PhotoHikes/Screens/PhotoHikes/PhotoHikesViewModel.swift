@@ -13,8 +13,7 @@ final class PhotoHikesViewModel {
     // MARK: - Properties
     
     let dependencies: AppDependency
-    
-    var didInitializeDependencies: Bool = false
+    var trackingViewModel: TrackingViewModel?
     
     // MARK: - Initialize
     
@@ -26,6 +25,10 @@ final class PhotoHikesViewModel {
     
     func setUp() async {
         await dependencies.setUp()
-        didInitializeDependencies = true
+        
+        trackingViewModel = await TrackingViewModel(
+            flickrService: dependencies.flickrService,
+            locationService: dependencies.locationService
+        )
     }
 }
