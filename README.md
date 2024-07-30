@@ -25,9 +25,18 @@ The iOS devices requires Location Services and GPS capabilities to install the a
 - [x] implement dependency injection
 - [x] fix keep photos when stopped
 
+
+## Architecture
+I chose an MVVM architecture to structure the code. This approach offers the benefit of making view models testable independently from the view logic.
+
+
 ## Dependency Injection
 In order to write proper unit tests it's important to be able to mock dependencies, e.g. services. Although I have quite some expierence with dependency injection via constructor or resolver, it was a bit tricky in this project, because of the pure SwiftUI approach. Other projects I worked had a app delegate and other places to setup dependencies before adding a view Controller to the window.
 Nevertheless it was fun to find a good way and I decided to go for a short loading screen during the async dependency set up.
+
+
+## Unit Tests
+For the Swift package `NetworkService`, as well as the services and view models, I've added unit tests. Although I haven't achieved a very high test coverage due to the extended time I've already spent on the project, the given set up with dependency injection and protocols ensures high testability.  
 
 
 ## Flickr
