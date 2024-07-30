@@ -9,9 +9,18 @@ import SwiftUI
 
 struct PhotoHikesView: View {
     
+    @State var viewModel: PhotoHikesViewModel
+    
     var body: some View {
-        NavigationStack() {
-            TrackingView()
+        if viewModel.didInitializeDependencies {
+            Text("Loading...")
+                .task {
+                    await viewModel.setUp()
+                }
+        } else {
+            NavigationStack() {
+                TrackingView()
+            }
         }
     }
 }
@@ -19,6 +28,7 @@ struct PhotoHikesView: View {
 // MARK: - Preview
 
 #Preview {
-    PhotoHikesView()
+    let viewModel = PhotoHikesViewModel(dependencies: AppDependency())
+    return PhotoHikesView(viewModel: viewModel)
 }
 
