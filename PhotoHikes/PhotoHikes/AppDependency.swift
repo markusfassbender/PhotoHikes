@@ -12,7 +12,6 @@ import NetworkService
 /// See this post for further explanation: https://simonbs.dev/posts/introducing-the-composition-root-pattern-in-a-swift-codebase/
 actor AppDependency {
     
-    
     var flickrService: any FlickrServiceProtocol { _flickrService }
     var locationService: any LocationServiceProtocol { _locationService }
     
