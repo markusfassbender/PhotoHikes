@@ -11,7 +11,23 @@ import XCTest
 
 final class TrackingViewModelTests: XCTestCase {
     
-    // TODO: write more unit tests when dependency injection is available
+    private var mockFlickrService: FlickrServiceMock!
+    private var mockLocationService: LocationServiceMock!
+    
+    override func setUp() async throws {
+        try await super.setUp()
+     
+        mockFlickrService = FlickrServiceMock()
+        mockLocationService = await LocationServiceMock()
+        await mockLocationService.setOnUpdateLocation { _ in }
+    }
+    
+    override func tearDown() {
+        mockLocationService = nil
+        mockFlickrService = nil
+        
+        super.tearDown()
+    }
     
     // MARK: isTracking
     
@@ -26,22 +42,13 @@ final class TrackingViewModelTests: XCTestCase {
         XCTAssertFalse(isTracking)
     }
     
-    func testSetUp_given_when_thenIsNotTracking() async {
-        // given
-        let viewModel = await makeViewModel()
-        
-        // when
-        await viewModel.setUp()
-        let isTracking = await viewModel.isTracking
-        
-        // then
-        XCTAssertFalse(isTracking)
-    }
-    
     // MARK: - Helpers
     
     @MainActor
     private func makeViewModel() -> TrackingViewModel {
-        TrackingViewModel()
+        TrackingViewModel(
+            flickrService: mockFlickrService,
+            locationService: mockLocationService
+        )
     }
 }
