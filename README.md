@@ -26,6 +26,12 @@ The iOS devices requires Location Services and GPS capabilities to install the a
 - [x] fix keep photos when stopped
 
 
+## Ideas to improve in future
+- On start tracking, it sometimes downloads multiple photos in parallel. It would be more convenient for the user to see only one photo at the beginning.
+- Enhance the Flickr search filter to find better matching photos for hiking.
+- Select a random photo from Flickr instead of always displaying the first photo on the list.
+
+
 ## Architecture
 I chose an MVVM architecture to structure the code. This approach offers the benefit of making view models testable independently from the view logic.
 
