@@ -12,18 +12,18 @@ The iOS devices requires Location Services and GPS capabilities to install the a
 
 
 ## Work Items Done
-- [x] setup project
-- [x] add initial screen with start/stop button
-- location services
-  - [x] implement CoreLocation
-  - [x] enable power-saving features
-- [x] add network service swift package
-- [x] add flickr service
-- [x] show images from flickr
-- [x] improve flickr photo selection
-- [x] fix view crashing on real device
-- [x] implement dependency injection
-- [x] fix keep photos when stopped
+- [x] Setup project
+- [x] Add initial screen with start/stop button
+- Location Services
+  - [x] Implement CoreLocation
+  - [x] Enable power-saving features
+- [x] Add network service swift package
+- [x] Add flickr service
+- [x] Show images from flickr
+- [x] Improve flickr photo selection
+- [x] Fix view crashing on real device
+- [x] Implement dependency injection
+- [x] Fix keep photos when stopped
 
 
 ## Ideas to improve in future
