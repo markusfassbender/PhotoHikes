@@ -25,6 +25,7 @@ The iOS devices requires Location Services and GPS capabilities to install the a
 - [x] improve flickr photo selection
 - [x] fix view crashing on real device
 - [x] implement dependency injection
+- [x] fix keep photos when stopped
 
 ### Questions
 - why is it mentioned that "it should work for at least a two hour walk"?
