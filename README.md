@@ -32,13 +32,17 @@ The iOS devices requires Location Services and GPS capabilities to install the a
   - other reasons?
 
 
-## Flickr - Nice To have
-- inject the Flickr api key instead of hardcoding it
-- handle Flickr api errors in a better way
-- load different photo sizes from Flickr
-- reduce Flickr coordinate precision to improve the user's privacy?
- 
- 
+## Flickr
+- Using the Flickr API is not self-explanatory, but with the [documentation](https://www.flickr.com/services/api/flickr.photos.search.html), it is possible to figure out how to use it.
+- For improvement, the Flickr API key should be injected, e.g., via CI environment secrets, instead of being hardcoded.
+- I read about an API rate limit, but according to the [documentation](https://www.flickr.com/services/developer/api/), it allows up to 3600 requests per hour.
+- Photos can be downloaded in different sizes, but I used the default size.
+- To protect user privacy, it might be beneficial to reduce the coordinate precision sent to the API. However, this would be a trade-off and must be tested thoroughly to ensure it still finds photos related to the hiking trail.
+- I chose the parameter `tags=outdoor,nature,landscape` as an example to filter matching photos. Other values should be evaluated.
+- I tried using the `geo_context` parameter for outdoor photos, but most photos did not have this value set, and the results often returned empty lists of photos.
+- The result format is not valid JSON, even if one send `format=json`. I've implemented a workaround the remove the prefix and suffix and added unit tests, though there might be other formats to evaluate. The [documentation](https://www.flickr.com/services/api/misc.overview.html) is not clear about this point.
+
+
 ## Location Services
 - For location services, there are several ways and options to track the device's location. I decided to use standard location updates in the foreground only. Region monitoring is not an option as it serves a different purpose, and significant location tracking reports only distances of 500 meters or more (see [documentation](https://developer.apple.com/documentation/corelocation/cllocationmanager/1423531-startmonitoringsignificantlocati)), which does not meet the requirement to load an image every 100 meters.
 - Initially, I attempted to implement background tracking, as I would expect it as a user. There are some APIs available for this, such as `CLBackgroundActivitySession` and `CLServiceSession`. However, after interpreting the given requirements, I concluded that the user will keep the app in the foreground only, which simplifies the implementation. Consequently, I reverted to requesting location service permission for "when in use" only.
