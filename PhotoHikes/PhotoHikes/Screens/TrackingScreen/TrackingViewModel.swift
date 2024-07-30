@@ -16,12 +16,12 @@ final class TrackingViewModel {
     private var flickrService: (any FlickrServiceProtocol)!
     
     var isTracking: Bool
-    var trackedImages: [UIImage]
+    var trackedPhotos: [UIImage]
     var errorMessage: LocalizedStringKey?
     
     init() {
         isTracking = false
-        trackedImages = []
+        trackedPhotos = []
     }
     
     func setUp() async {
@@ -89,7 +89,7 @@ final class TrackingViewModel {
                 let image = try await flickrService.loadImage(at: coordinates)
                 
                 if let uiImage = UIImage(data: image) {
-                    self.trackedImages.insert(uiImage, at: 0)
+                    self.trackedPhotos.insert(uiImage, at: 0)
                 } else {
                     // returned data from the service expected to contain valid image data.
                     assertionFailure("invalid image loaded!")
