@@ -7,6 +7,9 @@
     "Images cannot be loaded from Flickr, stopped tracking!" : {
 
     },
+    "Loading..." : {
+
+    },
     "required accuracyAuthorization `fullAccuracy` not granted!" : {
 
     },

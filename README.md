@@ -19,12 +19,12 @@ The iOS devices requires Location Services and GPS capabilities to install the a
 - location services
   - [x] implement CoreLocation
   - [x] enable power-saving features
-- [ ] implement dependency injection
 - [x] add network service swift package
 - [x] add flickr service
 - [x] show images from flickr
 - [x] improve flickr photo selection
 - [x] fix view crashing on real device
+- [x] implement dependency injection
 
 ### Questions
 - why is it mentioned that "it should work for at least a two hour walk"?
@@ -32,6 +32,10 @@ The iOS devices requires Location Services and GPS capabilities to install the a
   - api rating limit
   - performance on scrolling with many images
   - other reasons?
+
+## Dependency Injection
+In order to write proper unit tests it's important to be able to mock dependencies, e.g. services. Although I have quite some expierence with dependency injection via constructor or resolver, it was a bit tricky in this project, because of the pure SwiftUI approach. Other projects I worked had a app delegate and other places to setup dependencies before adding a view Controller to the window.
+Nevertheless it was fun to find a good way and I decided to go for a short loading screen during the async dependency set up. 
 
 
 ## Flickr

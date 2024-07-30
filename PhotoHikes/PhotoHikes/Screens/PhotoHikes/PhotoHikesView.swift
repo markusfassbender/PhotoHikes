@@ -9,16 +9,18 @@ import SwiftUI
 
 struct PhotoHikesView: View {
     
+    @State var viewModel: PhotoHikesViewModel
+    
     var body: some View {
-        NavigationStack() {
-            TrackingView()
+        if let trackingViewModel = viewModel.trackingViewModel {
+            NavigationStack() {
+                TrackingView(viewModel: trackingViewModel)
+            }
+        } else {
+            Text("Loading...")
+                .task {
+                    await viewModel.setUp()
+                }
         }
     }
 }
-
-// MARK: - Preview
-
-#Preview {
-    PhotoHikesView()
-}
-

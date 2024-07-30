@@ -12,21 +12,33 @@ import NetworkService
 @Observable @MainActor
 final class TrackingViewModel {
     
-    private var locationService: (any LocationServiceProtocol)!
-    private var flickrService: (any FlickrServiceProtocol)!
+    // MARK: - Properties
     
+    private let flickrService: any FlickrServiceProtocol
+    private let locationService: any LocationServiceProtocol
+
     private(set) var isTracking: Bool
     private(set) var trackedPhotos: [UIImage]
     private(set) var errorMessage: LocalizedStringKey?
     
-    init() {
+    // MARK: - Initialize
+    
+    init(
+        flickrService: any FlickrServiceProtocol,
+        locationService: any LocationServiceProtocol
+    ) {
         isTracking = false
         trackedPhotos = []
+        
+        self.locationService = locationService
+        self.flickrService = flickrService
+        
+        // Initialized
+        
+        setUp()
     }
     
-    func setUp() {
-        // temporary helper until dependency injection is available
-        locationService = LocationService()
+    private func setUp() {
         locationService.setOnUpdateLocation { [weak self] result in
             switch result {
             case .success(let location):
@@ -35,9 +47,6 @@ final class TrackingViewModel {
                 self?.errorMessage = "unhandled error: \(String(describing: error))!"
             }
         }
-        
-        let networkService = NetworkService(urlSession: .shared)
-        flickrService = FlickrService(networkService: networkService)
     }
     
     // MARK: - Tracking
@@ -54,7 +63,7 @@ final class TrackingViewModel {
         }
     }
     
-    private func startTracking() async {
+    func startTracking() async {
         isTracking = true
         trackedPhotos = []
         
@@ -70,7 +79,7 @@ final class TrackingViewModel {
         }
     }
     
-    private func stopTracking() async {
+    func stopTracking() async {
         isTracking = false
         locationService.stopUpdatingLocation()
     }

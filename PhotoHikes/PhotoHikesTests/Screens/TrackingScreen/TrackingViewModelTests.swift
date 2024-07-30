@@ -11,30 +11,83 @@ import XCTest
 
 final class TrackingViewModelTests: XCTestCase {
     
-    // TODO: write more unit tests when dependency injection is available
+    private var mockFlickrService: FlickrServiceMock!
+    private var mockLocationService: LocationServiceMock!
     
-    // MARK: isTracking
+    // MARK: - Set Up
     
-    func testInitial_given_when_thenIsNotTracking() async {
+    override func setUp() async throws {
+        try await super.setUp()
+     
+        mockFlickrService = FlickrServiceMock()
+        mockLocationService = await LocationServiceMock()
+    }
+    
+    override func tearDown() {
+        mockLocationService = nil
+        mockFlickrService = nil
+        
+        super.tearDown()
+    }
+    
+    // MARK: - Tests
+    
+    func testInitial_given_thenIsNotTracking() async {
         // given
         let viewModel = await makeViewModel()
         
         // when
-        let isTracking = await viewModel.isTracking
-        
         // then
+        let isTracking = await viewModel.isTracking
         XCTAssertFalse(isTracking)
     }
     
-    func testSetUp_given_when_thenIsNotTracking() async {
+    func testInitial_given_thenTrackedPhotosIsEmpty() async {
         // given
         let viewModel = await makeViewModel()
         
         // when
-        await viewModel.setUp()
-        let isTracking = await viewModel.isTracking
+        // then
+        let trackedPhotos = await viewModel.trackedPhotos
+        XCTAssert(trackedPhotos.isEmpty)
+    }
+    
+    @MainActor
+    func testInitial_given_thenErrorMessageIsNil() async {
+        // Without the @MainActor annocation one warning appears: "Non-sendable type 'LocalizedStringKey?'".
+        // It might be updated by Apple with one of the next Swift versions or one needs to find another way to access the Sendable value.
+        
+        // given
+        let viewModel = makeViewModel()
+        
+        // when
+        // then
+        let errorMessage = viewModel.errorMessage
+        XCTAssertNil(errorMessage)
+    }
+    
+    func testStartTracking_given_thenIsTracking() async {
+        // given
+        let viewModel = await makeViewModel()
+        
+        // when
+        await viewModel.startTracking()
         
         // then
+        let isTracking = await viewModel.isTracking
+        XCTAssertTrue(isTracking)
+    }
+    
+    func testStopTracking_given_thenIsNotTracking() async {
+        // given
+        let viewModel = await makeViewModel()
+        
+        // when
+        await viewModel.startTracking()
+        await viewModel.stopTracking()
+        
+        // then
+        let isTracking = await viewModel.isTracking
         XCTAssertFalse(isTracking)
     }
     
@@ -42,6 +95,9 @@ final class TrackingViewModelTests: XCTestCase {
     
     @MainActor
     private func makeViewModel() -> TrackingViewModel {
-        TrackingViewModel()
+        TrackingViewModel(
+            flickrService: mockFlickrService,
+            locationService: mockLocationService
+        )
     }
 }
