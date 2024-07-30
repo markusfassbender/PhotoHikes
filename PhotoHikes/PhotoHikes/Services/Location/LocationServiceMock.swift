@@ -11,23 +11,13 @@ import CoreLocation
 
 final class LocationServiceMock: LocationServiceProtocol {
     
-    private var setOnUpdateLocation_mockValue: ((Result<CLLocation, any Error>) -> Void)?
+    func setOnUpdateLocation(_ onUpdateLocation: @escaping (Result<CLLocation, any Error>) -> Void) { }
     
-    func setOnUpdateLocation(_ onUpdateLocation: @escaping (Result<CLLocation, any Error>) -> Void) {
-        self.setOnUpdateLocation_mockValue = onUpdateLocation
-    }
+    func requestAuthorization() async throws { }
     
-    func requestAuthorization() async throws {
-        fatalError("not implemented")
-    }
+    func startUpdatingLocation() { }
     
-    func startUpdatingLocation() {
-        fatalError("not implemented")
-    }
-    
-    func stopUpdatingLocation() {
-        fatalError("not implemented")
-    }
+    func stopUpdatingLocation() { }
 }
 
 #endif

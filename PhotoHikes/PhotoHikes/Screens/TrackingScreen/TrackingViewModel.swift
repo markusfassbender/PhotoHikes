@@ -63,7 +63,7 @@ final class TrackingViewModel {
         }
     }
     
-    private func startTracking() async {
+    func startTracking() async {
         isTracking = true
         trackedPhotos = []
         
@@ -79,7 +79,7 @@ final class TrackingViewModel {
         }
     }
     
-    private func stopTracking() async {
+    func stopTracking() async {
         isTracking = false
         locationService.stopUpdatingLocation()
     }
