@@ -53,7 +53,7 @@
 		28C9C6682C4FFDD00055A357 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		28C9C66E2C4FFDD10055A357 /* PhotoHikesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoHikesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C9C68B2C4FFF290055A357 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		28E15D0C2C57CEF100715BDC /* FlickrServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlickrServiceTests.swift; path = Flickr/FlickrServiceTests.swift; sourceTree = "<group>"; };
+		28E15D0C2C57CEF100715BDC /* FlickrServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrServiceTests.swift; sourceTree = "<group>"; };
 		28E15D0F2C57D44A00715BDC /* FlickrImageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrImageList.swift; sourceTree = "<group>"; };
 		28E15D132C57DBAC00715BDC /* FlickrServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrServiceError.swift; sourceTree = "<group>"; };
 		28E15D152C57E20E00715BDC /* FlickrSearchCoordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrSearchCoordinates.swift; sourceTree = "<group>"; };
@@ -87,6 +87,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28A4A98B2C59781500739F28 /* Flickr */ = {
+			isa = PBXGroup;
+			children = (
+				28E15D0C2C57CEF100715BDC /* FlickrServiceTests.swift */,
+			);
+			name = Flickr;
+			path = ../Screens/Flickr;
+			sourceTree = "<group>";
+		};
+		28A4A98C2C59783800739F28 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		28BFF88E2C56BBAA00C272EA /* Flickr */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,8 +158,8 @@
 		28C9C6712C4FFDD10055A357 /* PhotoHikesTests */ = {
 			isa = PBXGroup;
 			children = (
-				28E15D0B2C57CECA00715BDC /* Services */,
 				28EFAE2F2C53A4B200FAA6B2 /* Screens */,
+				28E15D0B2C57CECA00715BDC /* Services */,
 			);
 			path = PhotoHikesTests;
 			sourceTree = "<group>";
@@ -151,7 +167,8 @@
 		28E15D0B2C57CECA00715BDC /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				28E15D0C2C57CEF100715BDC /* FlickrServiceTests.swift */,
+				28A4A98C2C59783800739F28 /* Location */,
+				28A4A98B2C59781500739F28 /* Flickr */,
 			);
 			path = Services;
 			sourceTree = "<group>";
