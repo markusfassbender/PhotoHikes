@@ -72,5 +72,5 @@ For the Swift package `NetworkService`, as well as the services and view models,
 - Using SwiftUI `LazyVStack` should not cause performance issues with many photos, as it is designed to render only what is on the screen.
 
 
-## Other
-- I've added `@MainActor` to the view and view model explicitly, because it crashed on my real device. I have no experience with the new iOS 17 Observation API and didn't find more specifications in the [Apple migration guide](https://developer.apple.com/documentation/swiftui/migrating-from-the-observable-object-protocol-to-the-observable-macro). Maybe there is a better approach without enforcing logic via main actor.
+## Main Actor Annotations
+I've added the `@MainActor` annotation views and view models explicitly, because without the annotation it crashed on my real device. Yet I have no experience with the new iOS 17 Observation APIs I've used here and didn't find more specifications in the [Apple migration guide](https://developer.apple.com/documentation/swiftui/migrating-from-the-observable-object-protocol-to-the-observable-macro). Maybe there is a better approach without enforcing logic via main actor.
