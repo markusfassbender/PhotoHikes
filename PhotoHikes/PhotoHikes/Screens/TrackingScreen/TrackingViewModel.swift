@@ -9,7 +9,7 @@ import SwiftUI
 import CoreLocation
 import NetworkService
 
-@Observable
+@Observable @MainActor
 final class TrackingViewModel {
     
     private var locationService: (any LocationServiceProtocol)!
@@ -24,10 +24,10 @@ final class TrackingViewModel {
         trackedPhotos = []
     }
     
-    func setUp() async {
+    func setUp() {
         // temporary helper until dependency injection is available
-        locationService = await LocationService()
-        await locationService.setOnUpdateLocation { [weak self] result in
+        locationService = LocationService()
+        locationService.setOnUpdateLocation { [weak self] result in
             switch result {
             case .success(let location):
                 self?.processLocationUpdate(location)
@@ -60,7 +60,7 @@ final class TrackingViewModel {
         
         do {
             try await locationService.requestAuthorization()
-            await locationService.startUpdatingLocation()
+            locationService.startUpdatingLocation()
         } catch LocationServiceError.invalidAuthorizationStatus {
             errorMessage = "required authorizationStatus `authorizedAlways` not granted!"
         } catch LocationServiceError.invalidAccuracy {
@@ -72,7 +72,7 @@ final class TrackingViewModel {
     
     private func stopTracking() async {
         isTracking = false
-        await locationService.stopUpdatingLocation()
+        locationService.stopUpdatingLocation()
     }
     
     private func processLocationUpdate(_ location: CLLocation) {
