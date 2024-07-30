@@ -25,16 +25,9 @@ The iOS devices requires Location Services and GPS capabilities to install the a
 - [x] implement dependency injection
 - [x] fix keep photos when stopped
 
-### Questions
-- why is it mentioned that "it should work for at least a two hour walk"?
-  - battery life
-  - api rating limit
-  - performance on scrolling with many images
-  - other reasons?
-
 ## Dependency Injection
 In order to write proper unit tests it's important to be able to mock dependencies, e.g. services. Although I have quite some expierence with dependency injection via constructor or resolver, it was a bit tricky in this project, because of the pure SwiftUI approach. Other projects I worked had a app delegate and other places to setup dependencies before adding a view Controller to the window.
-Nevertheless it was fun to find a good way and I decided to go for a short loading screen during the async dependency set up. 
+Nevertheless it was fun to find a good way and I decided to go for a short loading screen during the async dependency set up.
 
 
 ## Flickr
@@ -56,6 +49,13 @@ Nevertheless it was fun to find a good way and I decided to go for a short loadi
 - The `desiredAccuracy` is set to `kCLLocationAccuracyNearestTenMeters` as it saves battery and should be precise enough to record the hiking track with photos.
 - The `pausesLocationUpdatesAutomatically` property should be considered in the future to improve battery usage.
 - It would be interesting to utilize the concurrent iOS 17 API `CLLocationUpdate.liveUpdates`, but I didn't fully understand from the documentation how to set the requirements, such as the distance filter, correctly.
-  
+
+
+## Performance and Battery Life Considerations
+- I am not sure what the requirement "it should work for at least a two-hour walk" is expected to be technically transferred to. I assume it’s about battery life or performance while scrolling through many images.
+- Unfortunately, I haven't had the chance to do a long test walk with the final app yet to analyze the battery life. However, I’ve added the distance filter and desired accuracy settings to reduce power consumption.
+- Using SwiftUI `LazyVStack` should not cause performance issues with many photos, as it is designed to render only what is on the screen.
+
+
 ## Other
 - I've added `@MainActor` to the view and view model explicitly, because it crashed on my real device. I have no experience with the new iOS 17 Observation API and didn't find more specifications in the [Apple migration guide](https://developer.apple.com/documentation/swiftui/migrating-from-the-observable-object-protocol-to-the-observable-macro). Maybe there is a better approach without enforcing logic via main actor.
