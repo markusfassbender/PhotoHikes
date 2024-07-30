@@ -8,7 +8,7 @@
 import CoreLocation
 
 /// Service to provide access to `CoreLocation` to track the device location.
-@MainActor @Observable
+@MainActor
 final class LocationService: NSObject, LocationServiceProtocol {
     
     private enum Constant {
