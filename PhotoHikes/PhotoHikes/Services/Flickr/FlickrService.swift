@@ -13,7 +13,9 @@ struct FlickrService: FlickrServiceProtocol {
     private enum Constant {
         static let apiURLString = "https://api.flickr.com/services/rest/"
         static let photoURLString = "https://live.staticflickr.com"
-        static let apiKey = "f28ecbe86a28cf727683cb576fdb63cb"
+        
+        // Generate your private api key for Flickr: https://www.flickr.com/services/api/
+        static let apiKey = "<invalid_key>"
     }
     
     private let networkService: any NetworkServiceProtocol
