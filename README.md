@@ -5,7 +5,8 @@ This is an example app as a show case as Senior iOS Engineer.
 ## Setup
 
 ### Local Machine
-Requires Xcode 15.4 without any additional tooling.
+- Requires Xcode 15.4 without any additional tooling.
+- Generate a private [Flickr API key](https://www.flickr.com/services/api/) and update `FlickrService.swift`.
 
 ### iOS Device Requirements
 The iOS devices requires Location Services and GPS capabilities to install the app. 
